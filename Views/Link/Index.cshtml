@@ -1,0 +1,10 @@
+﻿@using Lucifron.Entities
+@model IEnumerable<Link>
+
+@foreach (var item in Model)
+{
+    <div>@item.Id</div>
+    <div>@item.Visits.Count</div>
+    <div>@String.Join(",", item.Visits)</div>
+    <hline></hline>
+}
