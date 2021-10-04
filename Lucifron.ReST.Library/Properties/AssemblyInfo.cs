@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lucifron.ReST.Client")]
+[assembly: AssemblyTitle("Lucifron.ReST.Library")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lucifron.ReST.Client")]
+[assembly: AssemblyProduct("Lucifron.ReST.Library")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("02fb8a1f-8a1f-4caa-8c3f-49814b9d014c")]
+[assembly: Guid("dbbc8c3b-ced0-4295-99d2-74dee49b0c7d")]
 
 // Version information for an assembly consists of the following four values:
 //

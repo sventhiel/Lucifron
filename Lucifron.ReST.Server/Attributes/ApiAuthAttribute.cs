@@ -19,7 +19,7 @@ namespace Lucifron.ReST.Server.Attributes
             //var clientService = new ClientService(new ConnectionString(""));
             //var user = clientService.FindByIPv4AndToken(ipv4, token);
 
-            //if(user == null)
+            //if (user == null)
             //{
             //    actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
             //    actionContext.Response.Content = new StringContent("Token is not valid.");

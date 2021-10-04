@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Lucifron.ReST.Models
 {
@@ -42,7 +44,8 @@ namespace Lucifron.ReST.Models
         public string DOI { get; set; }
 
         [JsonProperty("event")]
-        public string Event { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Event Event { get; set; }
 
         [JsonProperty("publisher")]
         public string Publisher { get; set; }
@@ -61,5 +64,15 @@ namespace Lucifron.ReST.Models
 
         [JsonProperty("url")]
         public string URL { get; set; }
+    }
+
+    public enum Event
+    {
+        [EnumMember(Value = "publish")]
+        Publish,
+        [EnumMember(Value = "register")]
+        Register,
+        [EnumMember(Value = "hide")]
+        Hide
     }
 }

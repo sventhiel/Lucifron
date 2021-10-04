@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace Lucifron.ReST.Server.Controllers
@@ -36,6 +37,15 @@ namespace Lucifron.ReST.Server.Controllers
         [ApiAuth]
         public string Post([FromBody] DataCiteModel model)
         {
+            var doi = model.Data.Attributes.DOI.Split('/');
+
+            // DOI check
+            //var token = ActionContext.Request.Headers.Authorization?.ToString().Substring("Bearer ".Length).Trim();
+            //string ipv4 = HttpContext.Current.Request.UserHostAddress;
+            // if DOI not complete, add suffix
+
+            //model.Data.Attributes.DOI += "abcdefg";
+
             var client = new RestClient(_dataCiteConnectionString.Host);
             client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
 
