@@ -1,15 +1,19 @@
 ﻿using LiteDB;
 using Lucifron.ReST.Server.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace Lucifron.ReST.Server.Services
 {
-    public class ClientService
+    public class UserService
     {
         private readonly ConnectionString _connectionString;
 
-        public ClientService(ConnectionString connectionString)
+        public UserService(ConnectionString connectionString)
         {
             _connectionString = connectionString;
         }
@@ -18,9 +22,9 @@ namespace Lucifron.ReST.Server.Services
         {
             using (var db = new LiteDatabase(_connectionString))
             {
-                var col = db.GetCollection<Client>("clients");
+                var col = db.GetCollection<User>("users");
 
-                var client = new Client()
+                var client = new User()
                 {
                     Name = name,
                     IPv4 = ipv4,
@@ -36,11 +40,11 @@ namespace Lucifron.ReST.Server.Services
             return false;
         }
 
-        public Client FindByIPv4AndToken(string ipv4, string token)
+        public User FindByIPv4AndToken(string ipv4, string token)
         {
             using (var db = new LiteDatabase(_connectionString))
             {
-                var col = db.GetCollection<Client>("clients");
+                var col = db.GetCollection<User>("users");
 
                 return col.FindOne(c => c.IPv4 == ipv4 && c.Token == token);
             }
