@@ -1,11 +1,8 @@
 ﻿using LiteDB;
 using Lucifron.ReST.Server.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace Lucifron.ReST.Server.Services
 {
@@ -18,13 +15,13 @@ namespace Lucifron.ReST.Server.Services
             _connectionString = connectionString;
         }
 
-        public bool Create(string name, string ipv4, string prefix)
+        public long Create(string name, string ipv4, string prefix)
         {
             using (var db = new LiteDatabase(_connectionString))
             {
                 var col = db.GetCollection<User>("users");
 
-                var client = new User()
+                var user = new User()
                 {
                     Name = name,
                     IPv4 = ipv4,
@@ -32,13 +29,18 @@ namespace Lucifron.ReST.Server.Services
                     Token = generate(64)
                 };
 
-                return col.Insert(client);
+                return col.Insert(user);
             }
         }
 
-        public bool Delete()
+        public bool Delete(long id)
         {
-            return false;
+            using (var db = new LiteDatabase(_connectionString))
+            {
+                var col = db.GetCollection<User>("users");
+
+                return col.Delete(id);
+            }
         }
 
         public User FindByIPv4AndToken(string ipv4, string token)
@@ -49,6 +51,20 @@ namespace Lucifron.ReST.Server.Services
 
                 return col.FindOne(c => c.IPv4 == ipv4 && c.Token == token);
             }
+        }
+
+        public List<User> Get()
+        {
+            List<User> users = null;
+
+            using (var db = new LiteDatabase(_connectionString))
+            {
+                var col = db.GetCollection<User>("users");
+
+                users = col.Query().ToList();
+            }
+
+            return users;
         }
 
         private static string generate(int size)
