@@ -23,6 +23,20 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        <li><a href="#">Howdy @User.Identity.Name !</a></li>
+                        <li>@Html.ActionLink("Sign Out", "SignOut", "Account")</li>
+
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Sign In", "SignIn", "Account")</li>
+
+                    }
+                </ul>
             </div>
         </div>
     </div>
