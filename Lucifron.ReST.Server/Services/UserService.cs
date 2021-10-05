@@ -18,7 +18,7 @@ namespace Lucifron.ReST.Server.Services
             _connectionString = connectionString;
         }
 
-        public bool Create(string name, string ipv4)
+        public bool Create(string name, string ipv4, string prefix)
         {
             using (var db = new LiteDatabase(_connectionString))
             {
@@ -28,6 +28,7 @@ namespace Lucifron.ReST.Server.Services
                 {
                     Name = name,
                     IPv4 = ipv4,
+                    Prefix = prefix,
                     Token = generate(64)
                 };
 
