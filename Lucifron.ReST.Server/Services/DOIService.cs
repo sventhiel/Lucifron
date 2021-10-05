@@ -1,8 +1,4 @@
 ﻿using LiteDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Lucifron.ReST.Server.Services
 {
@@ -14,7 +10,5 @@ namespace Lucifron.ReST.Server.Services
         {
             _connectionString = connectionString;
         }
-
-
     }
 }

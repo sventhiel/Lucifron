@@ -4,13 +4,7 @@ using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace Lucifron.ReST.Server.Controllers
@@ -18,6 +12,7 @@ namespace Lucifron.ReST.Server.Controllers
     public class DOIsController : ApiController
     {
         private readonly DataCiteConnectionString _dataCiteConnectionString;
+
         public DOIsController()
         {
             _dataCiteConnectionString = new DataCiteConnectionString(ConfigurationManager.ConnectionStrings["DataCiteEndpoint"].ConnectionString);

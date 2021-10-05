@@ -70,8 +70,10 @@ namespace Lucifron.ReST.Models
     {
         [EnumMember(Value = "publish")]
         Publish,
+
         [EnumMember(Value = "register")]
         Register,
+
         [EnumMember(Value = "hide")]
         Hide
     }

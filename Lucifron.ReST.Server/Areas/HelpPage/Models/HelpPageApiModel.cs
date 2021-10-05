@@ -1,8 +1,8 @@
+using Lucifron.ReST.Server.Areas.HelpPage.ModelDescriptions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using Lucifron.ReST.Server.Areas.HelpPage.ModelDescriptions;
 
 namespace Lucifron.ReST.Server.Areas.HelpPage.Models
 {

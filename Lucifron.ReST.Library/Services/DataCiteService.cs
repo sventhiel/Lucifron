@@ -8,7 +8,6 @@ namespace Lucifron.ReST.Library.Services
     {
         public DataCiteService()
         {
-
         }
 
         public string Create()
@@ -31,7 +30,6 @@ namespace Lucifron.ReST.Library.Services
                     }
                 }
             };
-
 
             var client = new RestClient("https://localhost:44372");
             var request = new RestRequest($"api/dois", Method.POST).AddJsonBody(x);
