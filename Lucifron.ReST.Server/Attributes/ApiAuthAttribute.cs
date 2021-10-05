@@ -19,7 +19,7 @@ namespace Lucifron.ReST.Server.Attributes
 
             //
             // Admin
-            if (ConfigurationManager.AppSettings["AdminToken"] == token)
+            if (ConfigurationManager.AppSettings["Admin_Token"] == token)
                 return;
 
             //
@@ -29,7 +29,7 @@ namespace Lucifron.ReST.Server.Attributes
 
             if (user != null)
                 return;
-          
+
             //
             // Error
             actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
