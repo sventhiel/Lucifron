@@ -14,7 +14,8 @@ namespace Lucifron.ReST.Models
     public class DataCiteData
     {
         [JsonProperty("type")]
-        public string Type { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Type Type { get; set; }
 
         [JsonProperty("attributes")]
         public Attributes Attributes { get; set; }
@@ -35,7 +36,8 @@ namespace Lucifron.ReST.Models
     public class DataCiteTypes
     {
         [JsonProperty("resourceTypeGeneral")]
-        public string ResourceTypeGeneral { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ResourceType ResourceTypeGeneral { get; set; }
     }
 
     public class Attributes
@@ -76,5 +78,17 @@ namespace Lucifron.ReST.Models
 
         [EnumMember(Value = "hide")]
         Hide
+    }
+
+    public enum ResourceType
+    {
+        [EnumMember(Value = "Dataset")]
+        Dataset
+    }
+
+    public enum Type
+    {
+        [EnumMember(Value = "dois")]
+        DOIs
     }
 }
