@@ -166,12 +166,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DOIsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrefixesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Entities\DOI.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DOIHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +233,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
     <None Include="Web.config.example" />
     <None Include="Web.config.Debug.example">
       <DependentUpon>Web.config.example</DependentUpon>
@@ -241,7 +245,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Database\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

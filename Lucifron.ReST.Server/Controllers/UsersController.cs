@@ -14,7 +14,9 @@ namespace Lucifron.ReST.Server.Controllers
             var userService = new UserService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
             var users = userService.Get();
-            //userService.Create("test", "::1", "jexis");
+            //userService.Create("idiv", "::1", "10.23720");
+            //userService.Create("mydiv", "::1", "10.23720");
+            //userService.Create("jexis", "::1", "10.23720");
 
             return View();
         }
