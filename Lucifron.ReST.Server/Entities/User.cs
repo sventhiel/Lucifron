@@ -1,4 +1,6 @@
-﻿namespace Lucifron.ReST.Server.Entities
+﻿using System;
+
+namespace Lucifron.ReST.Server.Entities
 {
     public class User
     {
@@ -7,5 +9,7 @@
         public string IPv4 { get; set; }
         public string Token { get; set; }
         public string Prefix { get; set; }
+        public bool IsActive { get; set; }
+        public DateTimeOffset CreationDate { get; set; }
     }
 }
