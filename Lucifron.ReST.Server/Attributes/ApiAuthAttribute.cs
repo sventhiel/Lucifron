@@ -18,18 +18,16 @@ namespace Lucifron.ReST.Server.Attributes
             string ipv4 = HttpContext.Current.Request.UserHostAddress;
 
             //
-            // Admin
-            if (ConfigurationManager.AppSettings["Admin_Token"] == token)
-                return;
-
-            //
             // User
             var userService = new UserService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
             var user = userService.FindByIPv4AndToken(ipv4, token);
 
             if (user != null)
+            {
+                actionContext.ControllerContext.RouteData.Values.Add("user", user);
                 return;
-
+            }
+                
             //
             // Error
             actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
