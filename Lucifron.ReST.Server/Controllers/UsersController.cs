@@ -25,7 +25,5 @@ namespace Lucifron.ReST.Server.Controllers
         {
             return View();
         }
-
-
     }
 }

@@ -6,7 +6,6 @@ namespace Lucifron.ReST.Library.Services
 {
     public interface IDataCiteService
     {
-
     }
 
     public class DataCiteService

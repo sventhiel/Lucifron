@@ -27,13 +27,13 @@
                     @if (Request.IsAuthenticated)
                     {
 
-                        <li><a href="#">Howdy @User.Identity.Name !</a></li>
-                        <li>@Html.ActionLink("Sign Out", "SignOut", "Account")</li>
+                    <li><a href="#">Howdy @User.Identity.Name !</a></li>
+                    <li>@Html.ActionLink("Sign Out", "SignOut", "Account")</li>
 
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Sign In", "SignIn", "Account")</li>
+                    <li>@Html.ActionLink("Sign In", "SignIn", "Account")</li>
 
                     }
                 </ul>

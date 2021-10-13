@@ -10,7 +10,5 @@ namespace Lucifron.ReST.Server.Services
         {
             _connectionString = connectionString;
         }
-
-
     }
 }

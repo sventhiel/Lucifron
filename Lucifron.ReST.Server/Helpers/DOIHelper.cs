@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace Lucifron.ReST.Server.Helpers
 {
@@ -25,7 +21,7 @@ namespace Lucifron.ReST.Server.Helpers
             //
             // Suffix
             string doi_suffix = doi.Split('/')[1];
-            
+
             string doi_name = doi_suffix.Split('-')[0];
             if (doi_name != name)
                 return false;

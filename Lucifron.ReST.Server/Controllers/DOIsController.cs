@@ -1,16 +1,12 @@
-﻿using LiteDB;
-using Lucifron.ReST.Models;
+﻿using Lucifron.ReST.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;
-using Lucifron.ReST.Server.Services;
 using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Configuration;
-using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace Lucifron.ReST.Server.Controllers

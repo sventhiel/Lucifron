@@ -27,7 +27,7 @@ namespace Lucifron.ReST.Server.Attributes
                 actionContext.ControllerContext.RouteData.Values.Add("user", user);
                 return;
             }
-                
+
             //
             // Error
             actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
