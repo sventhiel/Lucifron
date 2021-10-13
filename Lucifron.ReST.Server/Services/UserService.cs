@@ -67,7 +67,7 @@ namespace Lucifron.ReST.Server.Services
             return users;
         }
 
-        private static string generate(int size)
+        private static string generate(int size = 64)
         {
             // Characters except I, l, O, 1, and 0 to decrease confusion when hand typing tokens
             var charSet = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
