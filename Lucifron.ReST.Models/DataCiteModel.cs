@@ -37,9 +37,12 @@ namespace Lucifron.ReST.Models
     {
         [JsonProperty("lang")]
         public string Language { get; set; }
+        
         [JsonProperty("description")]
         public string Description { get; set; }
+        
         [JsonProperty("descriptionType")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDescriptionType DataCiteDescriptionType { get; set; }
     }
 
@@ -62,6 +65,7 @@ namespace Lucifron.ReST.Models
         public string Date { get; set; }
 
         [JsonProperty("dateType")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDateType Type { get; set; }
     }
 
@@ -88,6 +92,9 @@ namespace Lucifron.ReST.Models
 
         [JsonProperty("version")]
         public string Version { get; set; }
+
+        [JsonProperty("descriptions")]
+        public List<DataCiteDescription> Descriptions { get; set; }
 
         [JsonProperty("creators")]
         public List<DataCiteCreator> Creators { get; set; }
