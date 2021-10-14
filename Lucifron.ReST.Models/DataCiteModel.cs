@@ -27,6 +27,22 @@ namespace Lucifron.ReST.Models
         public string Name { get; set; }
     }
 
+    public class DataCiteSubject
+    {
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+    }
+
+    public class DataCiteDescription
+    {
+        [JsonProperty("lang")]
+        public string Language { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("descriptionType")]
+        public DataCiteDescriptionType DataCiteDescriptionType { get; set; }
+    }
+
     public class DataCiteTitle
     {
         [JsonProperty("title")]
@@ -38,6 +54,15 @@ namespace Lucifron.ReST.Models
         [JsonProperty("resourceTypeGeneral")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ResourceType ResourceTypeGeneral { get; set; }
+    }
+
+    public class DataCiteDate
+    {
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("dateType")]
+        public DataCiteDateType Type { get; set; }
     }
 
     public class Attributes
@@ -52,8 +77,17 @@ namespace Lucifron.ReST.Models
         [JsonProperty("publisher")]
         public string Publisher { get; set; }
 
+        [JsonProperty("subjects")]
+        public List<DataCiteSubject> Subjects { get; set; }
+
+        [JsonProperty("dates")]
+        public List<DataCiteDate> Dates { get; set; }
+
         [JsonProperty("publicationYear")]
         public int PublicationYear { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
 
         [JsonProperty("creators")]
         public List<DataCiteCreator> Creators { get; set; }
@@ -86,9 +120,23 @@ namespace Lucifron.ReST.Models
         Dataset
     }
 
+    public enum DataCiteDescriptionType
+    {
+        [EnumMember(Value = "Abstract")]
+        Abstract,
+        [EnumMember(Value = "Methods")]
+        Methods,
+    }
+
     public enum Type
     {
         [EnumMember(Value = "dois")]
         DOIs
+    }
+
+    public enum DataCiteDateType
+    {
+        [EnumMember(Value = "Issued")]
+        Issued
     }
 }
