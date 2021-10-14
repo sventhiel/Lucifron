@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Lucifron.ReST.Server.Helpers
 {
@@ -10,31 +11,12 @@ namespace Lucifron.ReST.Server.Helpers
             return $"{prefix}/{name}-{id}-{generate()}";
         }
 
-        public static bool Validate(string doi, string prefix, string name, long id)
+        public static bool Validate(string doi, string prefix, string name)
         {
-            //
-            // Prefix
-            string doi_prefix = doi.Split('/')[0];
-            if (doi_prefix != prefix)
-                return false;
-
-            //
-            // Suffix
-            string doi_suffix = doi.Split('/')[1];
-
-            string doi_name = doi_suffix.Split('-')[0];
-            if (doi_name != name)
-                return false;
-
-            string doi_id = doi_suffix.Split('-')[1];
-            if (doi_id != id.ToString())
-                return false;
-
-            string doi_alpha = doi_suffix.Split('-')[2];
-            if (doi_alpha == null || doi_alpha.Length == 0)
-                return false;
-
-            return true;
+            string pattern = $@"{prefix}/{name}-\d+-[A-Za-z0-9]+";
+            // Create a Regex  
+            Regex rg = new Regex(pattern);
+            return rg.IsMatch(doi);
         }
 
         private static string generate(int size = 6)
