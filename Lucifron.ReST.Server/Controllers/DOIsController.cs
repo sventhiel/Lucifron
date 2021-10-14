@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Configuration;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Lucifron.ReST.Server.Controllers
@@ -47,14 +48,14 @@ namespace Lucifron.ReST.Server.Controllers
         [ApiAuth]
         public string Post([FromBody] DataCiteModel model)
         {
-            var doi = model.Data.Attributes.DOI.Split('/');
+            var user = ControllerContext.RouteData.Values["user"] as User;
 
-            // DOI check
-            //var token = ActionContext.Request.Headers.Authorization?.ToString().Substring("Bearer ".Length).Trim();
-            //string ipv4 = HttpContext.Current.Request.UserHostAddress;
-            // if DOI not complete, add suffix
-
-            //model.Data.Attributes.DOI += "abcdefg";
+            if(!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, user.Name))
+            {
+                ActionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
+                ActionContext.Response.Content = new StringContent("Token is not valid.");
+                return ActionContext.Response.Content.ToString();
+            }
 
             var client = new RestClient(_dataCiteConnectionString.Host);
             client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
