@@ -15,7 +15,7 @@ namespace Lucifron.ReST.Server.Services
             _connectionString = connectionString;
         }
 
-        public long Create(string name, string ipv4, string prefix)
+        public long Create(string name, string prefix, string ipv4)
         {
             using (var db = new LiteDatabase(_connectionString))
             {

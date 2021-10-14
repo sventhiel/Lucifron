@@ -170,6 +170,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\DOI.cs" />
+    <Compile Include="Entities\Prefix.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +235,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
     <None Include="Web.config.example" />
     <None Include="Web.config.Debug.example">
       <DependentUpon>Web.config.example</DependentUpon>
