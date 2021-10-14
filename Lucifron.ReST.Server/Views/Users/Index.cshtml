@@ -1,5 +1,36 @@
-﻿@{
+﻿@model IEnumerable<Lucifron.ReST.Server.Models.ReadUserModel>
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Prefix</th>
+                <th>IPv4</th>
+                <th>Token</th>
+            </tr>
+        </thead>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Name
+                </td>
+                <td>
+                    @user.Prefix
+                </td>
+                <td>
+                    @user.IPv4
+                </td>
+                <td>
+                    @user.Token
+                </td>
+            </tr>
+        }
+    </table>
+</div>
