@@ -14,7 +14,7 @@ namespace Lucifron.ReST.Server.Helpers
         public static bool Validate(string doi, string prefix, string name)
         {
             string pattern = $@"{prefix}/{name}-\d+-[A-Za-z0-9]+";
-            // Create a Regex  
+            // Create a Regex
             Regex rg = new Regex(pattern);
             return rg.IsMatch(doi);
         }
