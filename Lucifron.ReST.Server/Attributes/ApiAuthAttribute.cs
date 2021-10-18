@@ -20,7 +20,8 @@ namespace Lucifron.ReST.Server.Attributes
             //
             // User
             var userService = new UserService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
-            var user = userService.FindByIPv4AndToken(ipv4, token);
+            //var user = userService.FindByIPv4AndToken(ipv4, token);
+            var user = userService.FindByToken(token);
 
             if (user != null)
             {
