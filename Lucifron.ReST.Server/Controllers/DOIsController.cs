@@ -2,12 +2,15 @@
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;
+using Lucifron.ReST.Server.Models;
 using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Configuration;
+using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Lucifron.ReST.Server.Controllers
@@ -22,39 +25,38 @@ namespace Lucifron.ReST.Server.Controllers
         }
 
         [ApiAuth]
-        public string Get(long id)
+        public HttpResponseMessage Get(long id)
         {
             var user = ControllerContext.RouteData.Values["user"] as User;
 
+
             if (user != null)
             {
-                return DOIHelper.Create(user.Prefix, user.Name, id);
+                return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(user.Prefix, user.Name, id) });
             }
 
-            return null;
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
         [ApiAuth]
-        public string Get(string doi)
+        public HttpResponseMessage Get(string doi)
         {
             var client = new RestClient(_dataCiteConnectionString.Host);
             var request = new RestRequest($"dois/{doi}", Method.GET);
 
-            var x = client.Execute(request);
+            var response = client.Execute(request);
 
-            return x.Content;
+            return Request.CreateResponse(response.StatusCode, response.Content);
         }
 
         [ApiAuth]
-        public string Post([FromBody] DataCiteModel model)
+        public HttpResponseMessage Post([FromBody] DataCiteModel model)
         {
             var user = ControllerContext.RouteData.Values["user"] as User;
 
-            if(!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, user.Name))
+            if (!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, user.Name))
             {
-                ActionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
-                ActionContext.Response.Content = new StringContent("Token is not valid.");
-                return ActionContext.Response.Content.ToString();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
             }
 
             var client = new RestClient(_dataCiteConnectionString.Host);
@@ -65,13 +67,13 @@ namespace Lucifron.ReST.Server.Controllers
 
             var request = new RestRequest($"dois", Method.POST).AddJsonBody(JsonConvert.SerializeObject(model, serializerSettings));
 
-            var x = client.Execute(request);
+            var response = client.Execute(request);
 
-            return x.Content;
+            return Request.CreateResponse(response.StatusCode, response.Content);
         }
 
         [ApiAuth]
-        public string Put(string doi, [FromBody] DataCiteModel model)
+        public HttpResponseMessage Put(string doi, [FromBody] DataCiteModel model)
         {
             var client = new RestClient(_dataCiteConnectionString.Host);
             client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
@@ -81,21 +83,21 @@ namespace Lucifron.ReST.Server.Controllers
 
             var request = new RestRequest($"dois/{doi}", Method.PUT).AddJsonBody(JsonConvert.SerializeObject(model, serializerSettings));
 
-            var x = client.Execute(request);
+            var response = client.Execute(request);
 
-            return x.Content;
+            return Request.CreateResponse(response.StatusCode, response.Content);
         }
 
         [ApiAuth]
-        public string Delete(string doi)
+        public HttpResponseMessage Delete(string doi)
         {
             var client = new RestClient(_dataCiteConnectionString.Host);
             client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
             var request = new RestRequest($"dois/{doi}", Method.DELETE);
 
-            var x = client.Execute(request);
+            var response = client.Execute(request);
 
-            return x.Content;
+            return Request.CreateResponse(response.StatusCode, response.Content);
         }
     }
 }
