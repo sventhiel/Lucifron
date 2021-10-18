@@ -27,9 +27,11 @@ namespace Lucifron.ReST.Server.Models
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
+
         [Required]
         [Display(Name = "Prefix")]
         public string Prefix { get; set; }
+
         [Required]
         [Display(Name = "IPv4")]
         public string IPv4 { get; set; }

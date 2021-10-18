@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Helpers\DOIHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DOIModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DOIService.cs" />

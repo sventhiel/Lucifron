@@ -53,6 +53,16 @@ namespace Lucifron.ReST.Server.Services
             }
         }
 
+        public User FindByToken(string token)
+        {
+            using (var db = new LiteDatabase(_connectionString))
+            {
+                var col = db.GetCollection<User>("users");
+
+                return col.FindOne(c => c.Token == token);
+            }
+        }
+
         public List<User> Get()
         {
             List<User> users = null;
