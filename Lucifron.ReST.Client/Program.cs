@@ -1,4 +1,5 @@
 ﻿using Lucifron.ReST.Library.Services;
+using Newtonsoft.Json.Linq;
 using System;
 
 namespace Lucifron.ReST.Client
@@ -8,9 +9,12 @@ namespace Lucifron.ReST.Client
         private static void Main(string[] args)
         {
             DataCiteService x = new DataCiteService();
-            var y = x.Create();
+            var response = x.Create();
 
-            Console.WriteLine(y);
+            JObject joResponse = JObject.Parse(response);
+            string doi = joResponse["doi"].ToString();
+
+            Console.WriteLine(response);
 
             Console.ReadLine();
         }
