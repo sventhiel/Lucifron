@@ -8,6 +8,13 @@ namespace Lucifron.ReST.Server.Utils
         public string User { get; set; }
         public string Password { get; set; }
 
+        public DataCiteConnectionString(string host, string user, string password)
+        {
+            Host = host;
+            User = user;
+            Password = password;
+        }
+
         public DataCiteConnectionString(string connectionString)
         {
             DbConnectionStringBuilder dbConnectionStringBuilder = new DbConnectionStringBuilder();
