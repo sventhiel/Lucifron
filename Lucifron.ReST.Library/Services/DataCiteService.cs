@@ -1,45 +1,79 @@
 ﻿using Lucifron.ReST.Models;
 using RestSharp;
+using RestSharp.Authenticators;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Lucifron.ReST.Library.Services
 {
     public interface IDataCiteService
     {
+        string Create(DataCiteModel model);
+        string Find();
+        string FindByDOI(string doi);
+        string Update(DataCiteModel model);
+        string Delete(string doi);
     }
 
-    public class DataCiteService
+    public class DataCiteService : IDataCiteService
     {
-        public DataCiteService()
+        private string _Host;
+        private string _Token;
+
+        public DataCiteService(string host, string token)
         {
+            _Host = host;
+            _Token = token;
         }
 
-        public string Create()
+        public string Create(DataCiteModel model)
         {
-            var x = new DataCiteModel()
-            {
-                Data = new DataCiteData()
-                {
-                    Type = Type.DOIs,
-                    Attributes = new Attributes()
-                    {
-                        Creators = new List<DataCiteCreator>() { new DataCiteCreator() { Name = "Hans Peter Wolle" } },
-                        Titles = new List<DataCiteTitle>() { new DataCiteTitle() { Title = "Die unendliche Geschichte - Teil 2" } },
-                        DOI = "10.23720/xhdy-0021",
-                        Event = Event.Register,
-                        Types = new DataCiteTypes() { ResourceTypeGeneral = ResourceType.Dataset },
-                        PublicationYear = 2000,
-                        Publisher = "Löwenzahn",
-                        URL = "https://google.de"
-                    }
-                }
-            };
+            var client = new RestClient(_Host);
+            client.Authenticator = new JwtAuthenticator(_Token);
 
-            var client = new RestClient("https://localhost:44372");
-            var request = new RestRequest($"api/dois", Method.POST).AddJsonBody(x);
-            var y = client.Execute(request);
+            var request = new RestRequest($"api/dois", Method.POST).AddJsonBody(model);
+            var response = client.Execute(request);
 
-            return y.Content;
+            return response.Content;
+        }
+
+        public string Find()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string FindByDOI(string doi)
+        {
+            var client = new RestClient(_Host);
+            client.Authenticator = new JwtAuthenticator(_Token);
+
+            var request = new RestRequest($"api/dois/{doi}", Method.GET);
+            var response = client.Execute(request);
+
+            return response.Content;
+        }
+
+        public string Update(DataCiteModel model)
+        {
+            var client = new RestClient(_Host);
+            client.Authenticator = new JwtAuthenticator(_Token);
+
+            var request = new RestRequest($"api/dois/{model.Data.Attributes.DOI}", Method.PUT).AddJsonBody(model);
+            var response = client.Execute(request);
+
+            return response.Content;
+        }
+
+        public string Delete(string doi)
+        {
+            var client = new RestClient(_Host);
+            client.Authenticator = new JwtAuthenticator(_Token);
+
+            var request = new RestRequest($"api/dois/{doi}", Method.DELETE);
+            var response = client.Execute(request);
+
+            return response.Content;
         }
     }
 }
