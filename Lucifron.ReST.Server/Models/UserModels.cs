@@ -10,6 +10,8 @@ namespace Lucifron.ReST.Server.Models
         public string IPv4 { get; set; }
         public string Token { get; set; }
 
+        public long Credential { get; set; }
+
         public static ReadUserModel Convert(User user)
         {
             return new ReadUserModel()
@@ -17,7 +19,8 @@ namespace Lucifron.ReST.Server.Models
                 Name = user.Name,
                 Prefix = user.Prefix,
                 IPv4 = user.IPv4,
-                Token = user.Token
+                Token = user.Token,
+                Credential = user.Credential.Id
             };
         }
     }
@@ -35,5 +38,10 @@ namespace Lucifron.ReST.Server.Models
         [Required]
         [Display(Name = "IPv4")]
         public string IPv4 { get; set; }
+
+        [Required]
+        [Display(Name = "Credential")]
+        public long Credential { get; set; }
+
     }
 }
