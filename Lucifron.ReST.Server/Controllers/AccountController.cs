@@ -7,17 +7,27 @@ namespace Lucifron.ReST.Server.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        //
+        //
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// tba
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SignIn()
         {
             return View();
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult SignIn(SignInModel model)
         {

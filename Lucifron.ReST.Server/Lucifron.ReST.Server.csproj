@@ -164,22 +164,22 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Attributes\ApiAuthAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CredentialsController.cs" />
     <Compile Include="Controllers\DOIsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PrefixesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Entities\DOI.cs" />
-    <Compile Include="Entities\Prefix.cs" />
+    <Compile Include="Entities\Credential.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DOIHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CredentialModels.cs" />
     <Compile Include="Models\DOIModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CredentialService.cs" />
     <Compile Include="Services\DOIService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utils\DataCiteConnectionString.cs" />
@@ -237,6 +237,8 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Credentials\Index.cshtml" />
+    <Content Include="Views\Credentials\Create.cshtml" />
     <None Include="Web.config.example" />
     <None Include="Web.config.Debug.example">
       <DependentUpon>Web.config.example</DependentUpon>

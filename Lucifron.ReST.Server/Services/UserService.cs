@@ -15,17 +15,19 @@ namespace Lucifron.ReST.Server.Services
             _connectionString = connectionString;
         }
 
-        public long Create(string name, string prefix, string ipv4)
+        public long Create(string name, string prefix, string ipv4, long credential)
         {
             using (var db = new LiteDatabase(_connectionString))
             {
                 var col = db.GetCollection<User>("users");
+                var credentials = db.GetCollection<Credential>("credentials");
 
                 var user = new User()
                 {
                     Name = name,
                     IPv4 = ipv4,
                     Prefix = prefix,
+                    Credential = credentials.FindById(credential),
                     Token = generate(64)
                 };
 
@@ -59,11 +61,11 @@ namespace Lucifron.ReST.Server.Services
             {
                 var col = db.GetCollection<User>("users");
 
-                return col.FindOne(c => c.Token == token);
+                return col.Include(c => c.Credential).FindOne(c => c.Token == token);
             }
         }
 
-        public List<User> Get()
+        public List<User> Find()
         {
             List<User> users = null;
 
