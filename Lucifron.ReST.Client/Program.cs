@@ -8,8 +8,8 @@ namespace Lucifron.ReST.Client
     {
         private static void Main(string[] args)
         {
-            DataCiteService x = new DataCiteService();
-            var response = x.Create();
+            DataCiteService x = new DataCiteService("", "");
+            var response = x.Create(new Models.DataCiteModel());
 
             JObject joResponse = JObject.Parse(response);
             string doi = joResponse["doi"].ToString();

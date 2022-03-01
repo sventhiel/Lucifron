@@ -6,9 +6,6 @@ namespace Lucifron.ReST.Models.DataCite
 {
     public class DataCiteData
     {
-        [JsonProperty("test")]
-        public bool Test { get; set; }
-
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteType Type { get; set; }
