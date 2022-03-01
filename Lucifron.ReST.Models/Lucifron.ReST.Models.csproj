@@ -46,6 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataCiteModel.cs" />
+    <Compile Include="DataCite\DataCiteAttributes.cs" />
+    <Compile Include="DataCite\DataCiteCreator.cs" />
+    <Compile Include="DataCite\DataCiteData.cs" />
+    <Compile Include="DataCite\DataCiteDate.cs" />
+    <Compile Include="DataCite\DataCiteDescription.cs" />
+    <Compile Include="DataCite\DataCiteSubject.cs" />
+    <Compile Include="DataCite\DataCiteTitle.cs" />
+    <Compile Include="DataCite\DataCiteTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,10 +11,13 @@ namespace Lucifron.ReST.Server.Entities
         public string Token { get; set; }
         public string Prefix { get; set; }
         public string Suffix { get; set; }
+        public string Pattern { get; set; }
+
         public bool IsActive { get; set; }
 
         [BsonRef("credentials")]
         public Credential Credential { get; set; }
+
         public DateTimeOffset CreationDate { get; set; }
     }
 }

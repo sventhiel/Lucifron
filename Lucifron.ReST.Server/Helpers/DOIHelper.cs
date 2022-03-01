@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using Fare;
+using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -6,15 +8,34 @@ namespace Lucifron.ReST.Server.Helpers
 {
     public class DOIHelper
     {
-        public static string Create(string prefix, string name, long id)
+        //public static string Create(string prefix, string name, long id)
+        //{
+        //    return $"{prefix}/{name}.{id}-{generate()}";
+        //}
+
+        public static string Create(string pattern)
         {
-            return $"{prefix}/{name}.{id}-{generate()}";
+            try
+            {
+                Xeger xeger = new Xeger(pattern, new Random());
+                return xeger.Generate();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static bool Validate(string doi, string prefix, string name)
         {
             string pattern = $@"{prefix}/{name}.\d+-[a-z0-9]+";
             // Create a Regex
+            Regex rg = new Regex(pattern);
+            return rg.IsMatch(doi);
+        }
+
+        public static bool Validate(string doi, string pattern)
+        {
             Regex rg = new Regex(pattern);
             return rg.IsMatch(doi);
         }

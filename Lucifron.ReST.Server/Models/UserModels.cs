@@ -42,6 +42,5 @@ namespace Lucifron.ReST.Server.Models
         [Required]
         [Display(Name = "Credential")]
         public long Credential { get; set; }
-
     }
 }

@@ -8,6 +8,9 @@ using System.Web.Http.Controllers;
 
 namespace Lucifron.ReST.Server.Attributes
 {
+    /// <summary>
+    /// TODO
+    /// </summary>
     public class ApiAuthAttribute : AuthorizeAttribute
     {
         public override void OnAuthorization(HttpActionContext actionContext)
@@ -25,6 +28,7 @@ namespace Lucifron.ReST.Server.Attributes
 
             if (user != null)
             {
+                // TODO
                 actionContext.ControllerContext.RouteData.Values.Add("user", user);
                 return;
             }

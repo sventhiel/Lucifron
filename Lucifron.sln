@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Server", "Lucifron.ReST.Server\Lucifron.ReST.Server.csproj", "{E87C0549-ADC1-42AE-9312-85ADC1AE4EFE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Library", "Lucifron.ReST.Library\Lucifron.ReST.Library.csproj", "{DBBC8C3B-CED0-4295-99D2-74DEE49B0C7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Client", "Lucifron.ReST.Client\Lucifron.ReST.Client.csproj", "{02FB8A1F-8A1F-4CAA-8C3F-49814B9D014C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Server.Tests", "Lucifron.ReST.Server.Tests\Lucifron.ReST.Server.Tests.csproj", "{A9D4F4EF-EB3A-44A3-98C7-BE336A47F6BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{02FB8A1F-8A1F-4CAA-8C3F-49814B9D014C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02FB8A1F-8A1F-4CAA-8C3F-49814B9D014C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02FB8A1F-8A1F-4CAA-8C3F-49814B9D014C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D4F4EF-EB3A-44A3-98C7-BE336A47F6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D4F4EF-EB3A-44A3-98C7-BE336A47F6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D4F4EF-EB3A-44A3-98C7-BE336A47F6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D4F4EF-EB3A-44A3-98C7-BE336A47F6BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

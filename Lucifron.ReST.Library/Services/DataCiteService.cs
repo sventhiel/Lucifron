@@ -2,17 +2,19 @@
 using RestSharp;
 using RestSharp.Authenticators;
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
 
 namespace Lucifron.ReST.Library.Services
 {
     public interface IDataCiteService
     {
         string Create(DataCiteModel model);
+
         string Find();
+
         string FindByDOI(string doi);
+
         string Update(DataCiteModel model);
+
         string Delete(string doi);
     }
 

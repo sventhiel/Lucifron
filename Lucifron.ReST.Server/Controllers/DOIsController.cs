@@ -19,7 +19,6 @@ namespace Lucifron.ReST.Server.Controllers
 
         public DOIsController()
         {
-
         }
 
         [ApiAuth]
@@ -32,11 +31,16 @@ namespace Lucifron.ReST.Server.Controllers
 
                 if (user != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(user.Prefix, user.Name, id) });
+                    string pattern = user.Pattern;
+                    // Replace DatasetId
+                    pattern.Replace("{id}", $"{id}");
+
+                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(pattern) });
                 }
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
-            } catch
+            }
+            catch
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -56,13 +60,11 @@ namespace Lucifron.ReST.Server.Controllers
                 var response = client.Execute(request);
 
                 return Request.CreateResponse(response.StatusCode, response.Content);
-            } 
-            catch 
+            }
+            catch
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-
-
         }
 
         [ApiAuth]
@@ -94,7 +96,6 @@ namespace Lucifron.ReST.Server.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            
         }
 
         [ApiAuth]
@@ -102,6 +103,9 @@ namespace Lucifron.ReST.Server.Controllers
         {
             try
             {
+                var user = ControllerContext.RouteData.Values["user"] as User;
+                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+
                 var client = new RestClient(_dataCiteConnectionString.Host);
                 client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
 
@@ -118,7 +122,6 @@ namespace Lucifron.ReST.Server.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-                
         }
 
         [ApiAuth]
@@ -141,7 +144,6 @@ namespace Lucifron.ReST.Server.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            
         }
     }
 }
