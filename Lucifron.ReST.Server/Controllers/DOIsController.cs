@@ -59,7 +59,7 @@ namespace Lucifron.ReST.Server.Controllers
 
                 var response = client.Execute(request);
 
-                return Request.CreateResponse(response.StatusCode, response.Content);
+                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
             }
             catch
             {
@@ -86,11 +86,11 @@ namespace Lucifron.ReST.Server.Controllers
                 var serializerSettings = new JsonSerializerSettings();
                 serializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
 
-                var request = new RestRequest($"dois", Method.POST).AddJsonBody(JsonConvert.SerializeObject(model, serializerSettings));
+                var request = new RestRequest($"dois", Method.POST).AddJsonBody(JsonConvert.SerializeObject(model));
 
                 var response = client.Execute(request);
 
-                return Request.CreateResponse(response.StatusCode, response.Content);
+                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
             }
             catch
             {
@@ -116,7 +116,7 @@ namespace Lucifron.ReST.Server.Controllers
 
                 var response = client.Execute(request);
 
-                return Request.CreateResponse(response.StatusCode, response.Content);
+                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
             }
             catch
             {
@@ -138,7 +138,7 @@ namespace Lucifron.ReST.Server.Controllers
 
                 var response = client.Execute(request);
 
-                return Request.CreateResponse(response.StatusCode, response.Content);
+                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
             }
             catch
             {
