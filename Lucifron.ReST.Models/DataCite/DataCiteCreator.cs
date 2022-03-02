@@ -21,15 +21,21 @@ namespace Lucifron.ReST.Models.DataCite
         [JsonRequired]
         public DataCiteCreatorType NameType { get; set; }
 
-        public DataCiteCreator(string name, DataCiteCreatorType type)
+        public static DataCiteCreator Convert(string name, DataCiteCreatorType nameType)
         {
-            if(type == DataCiteCreatorType.Personal)
+            switch (nameType)
             {
-                GivenName = name.Substring(0, name.IndexOf(" "));
-                FamilyName = name.Substring(name.IndexOf(" ") + 1);
+                case DataCiteCreatorType.Personal:
+                    return new DataCiteCreator()
+                    {
+                        GivenName = name.Substring(0, name.IndexOf(" ")),
+                        FamilyName = name.Substring(name.IndexOf(" ") + 1),
+                        NameType = nameType
+                    };
+                default:
+                    return null;
             }
-
-            NameType = type;
+            
         }
     }
 
