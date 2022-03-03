@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace Lucifron.ReST.Models.DataCite
@@ -7,7 +8,7 @@ namespace Lucifron.ReST.Models.DataCite
     public class DataCiteTitle
     {
         [JsonProperty("title")]
-        [JsonRequired]
+        [Required]
         public string Title { get; set; }
 
         [JsonProperty("lang")]
@@ -15,12 +16,34 @@ namespace Lucifron.ReST.Models.DataCite
 
         [JsonProperty("titleType")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DataCiteTitleType TitleType { get; set; }
+        public DataCiteTitleType? TitleType { get; set; }
+
+        public static DataCiteTitle Convert(string title, string lang = null, DataCiteTitleType? titleType = null)
+        {
+            var dataCiteTitle = new DataCiteTitle()
+            {
+                Title = title
+            };
+
+            if (lang != null)
+                dataCiteTitle.Language = lang;
+
+            if(titleType != null)
+                dataCiteTitle.TitleType = titleType;
+
+            return dataCiteTitle;
+        }
     }
 
     public enum DataCiteTitleType
     {
+        [EnumMember(Value = "AlternativeTitle")]
+        AlternativeTitle,
         [EnumMember(Value = "Subtitle")]
         Subtitle,
+        [EnumMember(Value = "TranslatedTitle")]
+        TranslatedTitle,
+        [EnumMember(Value = "Other")]
+        Other
     }
 }

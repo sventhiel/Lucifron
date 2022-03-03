@@ -7,8 +7,7 @@ namespace Lucifron.ReST.Models.DataCite
     public class DataCiteCreator
     {
         [JsonProperty("name")]
-        public string Name
-        { get { return $"{this.FamilyName}, {this.GivenName}"; } }
+        public string Name { get; set; }
 
         [JsonProperty("givenName")]
         public string GivenName { get; set; }
@@ -18,10 +17,9 @@ namespace Lucifron.ReST.Models.DataCite
 
         [JsonProperty("nameType")]
         [JsonConverter(typeof(StringEnumConverter))]
-        [JsonRequired]
-        public DataCiteCreatorType NameType { get; set; }
+        public DataCiteCreatorType? NameType { get; set; }
 
-        public static DataCiteCreator Convert(string name, DataCiteCreatorType nameType)
+        public static DataCiteCreator Convert(string name, DataCiteCreatorType? nameType = null)
         {
             switch (nameType)
             {
@@ -32,16 +30,26 @@ namespace Lucifron.ReST.Models.DataCite
                         FamilyName = name.Substring(name.IndexOf(" ") + 1),
                         NameType = nameType
                     };
+                case DataCiteCreatorType.Organizational:
+                    return new DataCiteCreator()
+                    {
+                        Name = name,
+                        NameType = nameType
+                    };
                 default:
-                    return null;
+                    return new DataCiteCreator()
+                    {
+                        Name = name
+                    };
             }
-            
         }
     }
 
     public enum DataCiteCreatorType
     {
         [EnumMember(Value = "Personal")]
-        Personal
+        Personal,
+        [EnumMember(Value = "Organizational")]
+        Organizational
     }
 }

@@ -14,7 +14,23 @@ namespace Lucifron.ReST.Models.DataCite
 
         [JsonProperty("descriptionType")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DataCiteDescriptionType DescriptionType { get; set; }
+        public DataCiteDescriptionType? DescriptionType { get; set; }
+
+        public static DataCiteDescription Convert(string description, string lang = null, DataCiteDescriptionType? descriptionType = null)
+        {
+            var dataCiteDescription = new DataCiteDescription()
+            {
+                Description = description
+            };
+
+            if (lang != null)
+                dataCiteDescription.Language = lang;
+
+            if (descriptionType != null)
+                dataCiteDescription.DescriptionType = descriptionType;
+
+            return dataCiteDescription;
+        }
     }
 
     public enum DataCiteDescriptionType
