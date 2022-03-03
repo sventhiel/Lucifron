@@ -80,6 +80,11 @@ namespace Lucifron.ReST.Server.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
                 }
 
+                if(!ModelState.IsValid)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid model.");
+                }
+
                 var client = new RestClient(_dataCiteConnectionString.Host);
                 client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
 
