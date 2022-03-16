@@ -1,5 +1,6 @@
 ﻿using Lucifron.ReST.Server.Entities;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace Lucifron.ReST.Server.Models
 {
@@ -7,9 +8,9 @@ namespace Lucifron.ReST.Server.Models
     {
         public string Name { get; set; }
         public string Prefix { get; set; }
+        public string Pattern { get; set; }
         public string IPv4 { get; set; }
         public string Token { get; set; }
-
         public long Credential { get; set; }
 
         public static ReadUserModel Convert(User user)
@@ -18,6 +19,7 @@ namespace Lucifron.ReST.Server.Models
             {
                 Name = user.Name,
                 Prefix = user.Prefix,
+                Pattern = user.Pattern,
                 IPv4 = user.IPv4,
                 Token = user.Token,
                 Credential = user.Credential.Id
@@ -34,6 +36,10 @@ namespace Lucifron.ReST.Server.Models
         [Required]
         [Display(Name = "Prefix")]
         public string Prefix { get; set; }
+
+        [Required]
+        [Display(Name = "Pattern")]
+        public Regex Pattern { get; set; }
 
         [Required]
         [Display(Name = "IPv4")]
