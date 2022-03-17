@@ -80,7 +80,7 @@ namespace Lucifron.ReST.Server.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
                 }
 
-                if(!ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid model.");
                 }

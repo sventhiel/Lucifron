@@ -1,5 +1,4 @@
-﻿using Lucifron.ReST.Client.Extensions;
-using Lucifron.ReST.Client.Models;
+﻿using Lucifron.ReST.Client.Models;
 using Lucifron.ReST.Models;
 using RestSharp;
 using RestSharp.Authenticators;
