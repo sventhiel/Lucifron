@@ -39,10 +39,13 @@ namespace Lucifron.ReST.Library.Models
     {
         [EnumMember(Value = "AlternativeTitle")]
         AlternativeTitle,
+
         [EnumMember(Value = "Subtitle")]
         Subtitle,
+
         [EnumMember(Value = "TranslatedTitle")]
         TranslatedTitle,
+
         [EnumMember(Value = "Other")]
         Other
     }

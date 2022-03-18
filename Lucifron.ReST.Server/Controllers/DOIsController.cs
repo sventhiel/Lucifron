@@ -1,4 +1,4 @@
-﻿using Lucifron.ReST.Models;
+﻿using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;

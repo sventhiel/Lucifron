@@ -1,20 +1,16 @@
-﻿using Lucifron.ReST.Client.Models;
-using Lucifron.ReST.Models;
+﻿using Lucifron.ReST.Library.Extensions;
+using Lucifron.ReST.Library.Models;
 using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Client.Services
 {
     public interface IDataCiteService
     {
-        DataCiteDOI Create(DataCiteModel model);
+        string Create(DataCiteModel model);
 
         string Find();
 
@@ -36,13 +32,13 @@ namespace Lucifron.ReST.Client.Services
             _Token = token;
         }
 
-        public DataCiteDOI Create(DataCiteModel model)
+        public string Create(DataCiteModel model)
         {
             ICollection<ValidationResult> results = null;
 
-            if(!model.Validate(out results))
+            if (!model.Validate(out results))
             {
-                return null; 
+                return null;
             }
 
             var client = new RestClient(_Host);

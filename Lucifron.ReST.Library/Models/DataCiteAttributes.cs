@@ -42,41 +42,17 @@ namespace Lucifron.ReST.Library.Models
 
         // Recommended AND Optional
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [JsonProperty("subjects")]
         public List<DataCiteSubject> Subjects { get; set; }
 
         [JsonProperty("dates")]
         public List<DataCiteDate> Dates { get; set; }
 
-
-
         [JsonProperty("version")]
         public string Version { get; set; }
 
         [JsonProperty("descriptions")]
         public List<DataCiteDescription> Descriptions { get; set; }
-
-
-
-
-
-
-
-
     }
 
     public enum DataCiteEventType

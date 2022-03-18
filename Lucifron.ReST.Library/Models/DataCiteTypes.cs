@@ -18,20 +18,28 @@ namespace Lucifron.ReST.Library.Models
     {
         [EnumMember(Value = "Audiovisual")]
         Audiovisual,
+
         [EnumMember(Value = "Book")]
         Book,
+
         [EnumMember(Value = "BookChapter")]
         BookChapter,
+
         [EnumMember(Value = "Collection")]
         Collection,
+
         [EnumMember(Value = "ComputationalNotebook")]
         ComputationalNotebook,
+
         [EnumMember(Value = "ConferencePaper")]
         ConferencePaper,
+
         [EnumMember(Value = "ConferenceProceeding")]
         ConferenceProceeding,
+
         [EnumMember(Value = "DataPaper")]
         DataPaper,
+
         [EnumMember(Value = "Dataset")]
         Dataset
     }

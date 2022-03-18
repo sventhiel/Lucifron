@@ -30,12 +30,14 @@ namespace Lucifron.ReST.Library.Models
                         FamilyName = name.Substring(name.IndexOf(" ") + 1),
                         NameType = nameType
                     };
+
                 case DataCiteCreatorType.Organizational:
                     return new DataCiteCreator()
                     {
                         Name = name,
                         NameType = nameType
                     };
+
                 default:
                     return new DataCiteCreator()
                     {
@@ -49,6 +51,7 @@ namespace Lucifron.ReST.Library.Models
     {
         [EnumMember(Value = "Personal")]
         Personal,
+
         [EnumMember(Value = "Organizational")]
         Organizational
     }
