@@ -24,7 +24,7 @@ namespace Lucifron.ReST.Library.Tests
             try
             {
                 var model = new DataCiteModel();
-                ICollection<ValidationResult> errors = new List<ValidationResult>();
+                var errors = new List<ValidationResult>();
 
                 bool valid = model.Validate(out errors);
 
