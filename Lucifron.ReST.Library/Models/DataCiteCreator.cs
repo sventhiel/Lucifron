@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NameParser;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
@@ -24,10 +25,14 @@ namespace Lucifron.ReST.Library.Models
             switch (nameType)
             {
                 case DataCiteCreatorType.Personal:
+                    var person = new HumanName(name);
+
                     return new DataCiteCreator()
                     {
-                        GivenName = name.Substring(0, name.IndexOf(" ")),
-                        FamilyName = name.Substring(name.IndexOf(" ") + 1),
+                        //GivenName = name.Substring(0, name.IndexOf(" ")),
+                        GivenName = person.First,
+                        //FamilyName = name.Substring(name.IndexOf(" ") + 1),
+                        FamilyName = person.Last,
                         NameType = nameType
                     };
 
@@ -44,6 +49,16 @@ namespace Lucifron.ReST.Library.Models
                         Name = name
                     };
             }
+        }
+
+        public static DataCiteCreator Convert(string firstname, string lastname)
+        {
+            return new DataCiteCreator()
+            {
+                GivenName = firstname,
+                FamilyName = lastname,
+                NameType = DataCiteCreatorType.Personal
+            };
         }
     }
 
