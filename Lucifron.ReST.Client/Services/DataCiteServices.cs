@@ -10,14 +10,19 @@ namespace Lucifron.ReST.Client.Services
 {
     public interface IDataCiteService
     {
+        // create doi based on the given model
         string Create(DataCiteModel model);
 
+        // find all related dois
         string Find();
 
+        // find a specific doi
         string FindByDOI(string doi);
 
+        // update an existing doi based on the given model
         string Update(DataCiteModel model);
 
+        // delete a whole doi entry based on the given doi
         string Delete(string doi);
     }
 
@@ -34,7 +39,7 @@ namespace Lucifron.ReST.Client.Services
 
         public string Create(DataCiteModel model)
         {
-            ICollection<ValidationResult> results = null;
+            List<ValidationResult> results = null;
 
             if (!model.Validate(out results))
             {
