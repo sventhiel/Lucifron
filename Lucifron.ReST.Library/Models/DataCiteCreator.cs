@@ -30,7 +30,7 @@ namespace Lucifron.ReST.Library.Models
                     return new DataCiteCreator()
                     {
                         //GivenName = name.Substring(0, name.IndexOf(" ")),
-                        GivenName = person.First,
+                        GivenName = (person.Middle.Length > 0) ? $"{person.First} {person.Middle}" : $"{person.First}",
                         //FamilyName = name.Substring(name.IndexOf(" ") + 1),
                         FamilyName = person.Last,
                         NameType = nameType
