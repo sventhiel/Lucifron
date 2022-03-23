@@ -1,10 +1,6 @@
 ﻿using Lucifron.ReST.Library.Models;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Library.Tests
 {
@@ -20,7 +16,7 @@ namespace Lucifron.ReST.Library.Tests
         { }
 
         [TestCase("Jan van der Horst", "Jan", "van der Horst")]
-        [TestCase("Maria Jose Alvarez Blanco", "Maria", "Alvarez Blanco")]
+        [TestCase("Maria Jose Alvarez Blanco", "Maria Jose Alvarez", "Blanco")]
         public void Check_DataCiteCreatorNames(string name, string firstname, string lastname)
         {
             try
@@ -34,7 +30,6 @@ namespace Lucifron.ReST.Library.Tests
             {
                 throw ex;
             }
-
         }
     }
 }
