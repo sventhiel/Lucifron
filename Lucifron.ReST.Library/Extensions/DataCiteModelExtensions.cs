@@ -1,6 +1,5 @@
 ﻿using Lucifron.ReST.Library.Models;
 using System.Collections.Generic;
-using DataAnnotationsValidator;
 using System.ComponentModel.DataAnnotations;
 
 namespace Lucifron.ReST.Library.Extensions
