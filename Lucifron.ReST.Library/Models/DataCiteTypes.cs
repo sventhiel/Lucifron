@@ -12,35 +12,43 @@ namespace Lucifron.ReST.Library.Models
 
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
+
+        protected DataCiteTypes() { }
+
+        public DataCiteTypes(string resourceType, DataCiteResourceType resourceTypeGeneral)
+        {
+            ResourceType = resourceType;
+            ResourceTypeGeneral = resourceTypeGeneral;
+        }
     }
 
     public enum DataCiteResourceType
     {
         [EnumMember(Value = "Audiovisual")]
-        Audiovisual,
+        Audiovisual = 1,
 
         [EnumMember(Value = "Book")]
-        Book,
+        Book = 2,
 
         [EnumMember(Value = "BookChapter")]
-        BookChapter,
+        BookChapter = 3,
 
         [EnumMember(Value = "Collection")]
-        Collection,
+        Collection = 4,
 
         [EnumMember(Value = "ComputationalNotebook")]
-        ComputationalNotebook,
+        ComputationalNotebook = 5,
 
         [EnumMember(Value = "ConferencePaper")]
-        ConferencePaper,
+        ConferencePaper = 6,
 
         [EnumMember(Value = "ConferenceProceeding")]
-        ConferenceProceeding,
+        ConferenceProceeding = 7,
 
         [EnumMember(Value = "DataPaper")]
-        DataPaper,
+        DataPaper = 8,
 
         [EnumMember(Value = "Dataset")]
-        Dataset
+        Dataset = 9
     }
 }

@@ -16,29 +16,26 @@ namespace Lucifron.ReST.Library.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDescriptionType? DescriptionType { get; set; }
 
-        public static DataCiteDescription Convert(string description, string lang = null, DataCiteDescriptionType? descriptionType = null)
+        protected DataCiteDescription() { }
+
+        public DataCiteDescription(string description, string lang = null, DataCiteDescriptionType? descriptionType = null)
         {
-            var dataCiteDescription = new DataCiteDescription()
-            {
-                Description = description
-            };
+            Description = description;
 
             if (lang != null)
-                dataCiteDescription.Language = lang;
+                Language = lang;
 
             if (descriptionType != null)
-                dataCiteDescription.DescriptionType = descriptionType;
-
-            return dataCiteDescription;
+                DescriptionType = descriptionType;
         }
     }
 
     public enum DataCiteDescriptionType
     {
         [EnumMember(Value = "Abstract")]
-        Abstract,
+        Abstract = 1,
 
         [EnumMember(Value = "Methods")]
-        Methods
+        Methods = 2
     }
 }

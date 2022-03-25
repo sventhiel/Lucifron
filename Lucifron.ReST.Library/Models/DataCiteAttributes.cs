@@ -8,39 +8,44 @@ namespace Lucifron.ReST.Library.Models
 {
     public class DataCiteAttributes
     {
-        // Required
-
+        #region required
         [JsonProperty("doi")]
         public string DOI { get; set; }
 
-        [JsonProperty("event")]
+        [JsonProperty("event", Required = Required.Always)]
         [JsonConverter(typeof(StringEnumConverter))]
+        [Required]
         public DataCiteEventType Event { get; set; }
 
-        [JsonProperty("creators")]
+        [JsonProperty("creators", Required = Required.Always)]
         [Required]
+        [MinLength(1)]
         public List<DataCiteCreator> Creators { get; set; }
 
-        [JsonProperty("titles")]
+        [JsonProperty("titles", Required = Required.Always)]
         [Required]
+        [MinLength(1)]
         public List<DataCiteTitle> Titles { get; set; }
 
-        [JsonProperty("publisher")]
+        [JsonProperty("publisher", Required = Required.Always)]
         [Required]
         public string Publisher { get; set; }
 
-        [JsonProperty("publicationYear")]
+        [JsonProperty("publicationYear", Required = Required.Always)]
         [Required]
         public int PublicationYear { get; set; }
 
-        [JsonProperty("url")]
+        [JsonProperty("url", Required = Required.Always)]
         [Required]
         public string URL { get; set; }
 
-        [JsonProperty("types")]
+        [JsonProperty("types", Required = Required.Always)]
+        [Required]
         public DataCiteTypes Types { get; set; }
 
-        // Recommended AND Optional
+        #endregion
+
+        #region recommended / optional
 
         [JsonProperty("subjects")]
         public List<DataCiteSubject> Subjects { get; set; }
@@ -53,17 +58,28 @@ namespace Lucifron.ReST.Library.Models
 
         [JsonProperty("descriptions")]
         public List<DataCiteDescription> Descriptions { get; set; }
+
+        #endregion
+
+        [JsonConstructor]
+        public DataCiteAttributes()
+        {
+            Creators = new List<DataCiteCreator>();
+            Descriptions = new List<DataCiteDescription>();
+            Subjects = new List<DataCiteSubject>();
+            Titles = new List<DataCiteTitle>();
+        }
     }
 
     public enum DataCiteEventType
     {
         [EnumMember(Value = "publish")]
-        Publish,
+        Publish = 1,
 
         [EnumMember(Value = "register")]
-        Register,
+        Register = 2,
 
         [EnumMember(Value = "hide")]
-        Hide
+        Hide = 3
     }
 }

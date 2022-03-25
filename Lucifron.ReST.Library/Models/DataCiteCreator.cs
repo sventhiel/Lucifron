@@ -20,54 +20,48 @@ namespace Lucifron.ReST.Library.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteCreatorType? NameType { get; set; }
 
-        public static DataCiteCreator Convert(string name, DataCiteCreatorType? nameType = null)
+        [JsonConstructor]
+        protected DataCiteCreator() { }
+
+        public DataCiteCreator(string name, DataCiteCreatorType? type = null)
         {
-            switch (nameType)
+            switch (type)
             {
                 case DataCiteCreatorType.Personal:
                     var person = new HumanName(name);
 
-                    return new DataCiteCreator()
-                    {
-                        //GivenName = name.Substring(0, name.IndexOf(" ")),
-                        GivenName = (person.Middle.Length > 0) ? $"{person.First} {person.Middle}" : $"{person.First}",
-                        //FamilyName = name.Substring(name.IndexOf(" ") + 1),
-                        FamilyName = person.Last,
-                        NameType = nameType
-                    };
+                    //GivenName = name.Substring(0, name.IndexOf(" ")),
+                    GivenName = (person.Middle.Length > 0) ? $"{person.First} {person.Middle}" : $"{person.First}";
+                    //FamilyName = name.Substring(name.IndexOf(" ") + 1),
+                    FamilyName = person.Last;
+                    NameType = type;
+                    break;
 
                 case DataCiteCreatorType.Organizational:
-                    return new DataCiteCreator()
-                    {
-                        Name = name,
-                        NameType = nameType
-                    };
+                    Name = name;
+                    NameType = type;
+                    break;
 
                 default:
-                    return new DataCiteCreator()
-                    {
-                        Name = name
-                    };
+                    Name = name;
+                    break;
             }
         }
 
-        public static DataCiteCreator Convert(string firstname, string lastname)
+        public DataCiteCreator(string firstname, string lastname)
         {
-            return new DataCiteCreator()
-            {
-                GivenName = firstname,
-                FamilyName = lastname,
-                NameType = DataCiteCreatorType.Personal
-            };
+            GivenName = firstname;
+            FamilyName = lastname;
+            NameType = DataCiteCreatorType.Personal;
         }
     }
 
     public enum DataCiteCreatorType
     {
         [EnumMember(Value = "Personal")]
-        Personal,
+        Personal = 1,
 
         [EnumMember(Value = "Organizational")]
-        Organizational
+        Organizational = 2
     }
 }

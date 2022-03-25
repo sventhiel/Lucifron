@@ -7,19 +7,25 @@ namespace Lucifron.ReST.Library.Models
 {
     public class DataCiteData
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Required.Always)]
         [JsonConverter(typeof(StringEnumConverter))]
         [Required]
         public DataCiteType Type { get; set; }
 
-        [JsonProperty("attributes")]
+        [JsonProperty("attributes", Required = Required.Always)]
         [Required]
         public DataCiteAttributes Attributes { get; set; }
+
+        [JsonConstructor]
+        public DataCiteData()
+        {
+            Attributes = new DataCiteAttributes();
+        }
     }
 
     public enum DataCiteType
     {
         [EnumMember(Value = "dois")]
-        DOIs
+        DOIs = 1
     }
 }
