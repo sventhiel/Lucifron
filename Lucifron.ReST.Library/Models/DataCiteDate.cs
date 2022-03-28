@@ -13,7 +13,8 @@ namespace Lucifron.ReST.Library.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDateType DateType { get; set; }
 
-        protected DataCiteDate() { }
+        protected DataCiteDate()
+        { }
 
         public DataCiteDate(string date, DataCiteDateType type)
         {

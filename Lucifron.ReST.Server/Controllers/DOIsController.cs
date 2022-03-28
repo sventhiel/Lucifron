@@ -35,7 +35,7 @@ namespace Lucifron.ReST.Server.Controllers
                     // Replace DatasetId
                     pattern.Replace("{id}", $"{id}");
 
-                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(pattern) });
+                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(pattern, null) });
                 }
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -75,7 +75,7 @@ namespace Lucifron.ReST.Server.Controllers
                 var user = ControllerContext.RouteData.Values["user"] as User;
                 _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
-                if (!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, user.Name))
+                if (!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, null))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
                 }

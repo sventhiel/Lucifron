@@ -16,7 +16,8 @@ namespace Lucifron.ReST.Library.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDescriptionType? DescriptionType { get; set; }
 
-        protected DataCiteDescription() { }
+        protected DataCiteDescription()
+        { }
 
         public DataCiteDescription(string description, string lang = null, DataCiteDescriptionType? descriptionType = null)
         {

@@ -1,12 +1,8 @@
 ﻿using Fare;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using Lucifron.ReST.Library.Enumerations;
+using Lucifron.ReST.Library.Extensions;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Lucifron.ReST.Server.Helpers
@@ -18,10 +14,17 @@ namespace Lucifron.ReST.Server.Helpers
         //    return $"{prefix}/{name}.{id}-{generate()}";
         //}
 
-        public static string Create(string pattern)
+        public static string Create(string pattern, Dictionary<Placeholder, string> placeholders = null)
         {
             try
             {
+                if (placeholders != null)
+                {
+                    foreach (var placeholder in placeholders)
+                    {
+                        pattern = pattern.Replace(placeholder.Key.GetPlaceholderValue(), placeholder.Value);
+                    }
+                }
                 Xeger xeger = new Xeger(pattern, new Random());
                 return xeger.Generate();
             }
@@ -31,38 +34,23 @@ namespace Lucifron.ReST.Server.Helpers
             }
         }
 
-        public static bool Validate(string doi, string prefix, string name)
+        public static bool Validate(string doi, string pattern, Dictionary<Placeholder, string> placeholders)
         {
-            string pattern = $@"{prefix}/{name}.\d+-[a-z0-9]+";
-            // Create a Regex
-            Regex rg = new Regex(pattern);
-            return rg.IsMatch(doi);
-        }
-
-        public static bool Validate(string doi, string pattern)
-        {
-            Regex rg = new Regex(pattern);
-            return rg.IsMatch(doi);
-        }
-
-        private static string generate(int size = 6)
-        {
-            // Characters except I, l, O, 1, and 0 to decrease confusion when hand typing tokens
-            var charSet = "abcdefghijklmnopqrstuvwxyz0123456789";
-            var chars = charSet.ToCharArray();
-            var data = new byte[1];
-
-            using (var crypto = new RNGCryptoServiceProvider())
+            try
             {
-                crypto.GetNonZeroBytes(data);
-                data = new byte[size];
-                crypto.GetNonZeroBytes(data);
-                var result = new StringBuilder(size);
-                foreach (var b in data)
+                if (placeholders != null)
                 {
-                    result.Append(chars[b % (chars.Length)]);
+                    foreach (var placeholder in placeholders)
+                    {
+                        pattern = pattern.Replace(placeholder.Key.GetPlaceholderValue(), placeholder.Value);
+                    }
                 }
-                return result.ToString();
+                Regex rg = new Regex(pattern);
+                return rg.IsMatch(doi);
+            }
+            catch
+            {
+                return false;
             }
         }
     }

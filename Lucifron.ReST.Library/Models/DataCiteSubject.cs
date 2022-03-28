@@ -7,7 +7,8 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
-        protected DataCiteSubject() { }
+        protected DataCiteSubject()
+        { }
 
         public DataCiteSubject(string subject)
         {

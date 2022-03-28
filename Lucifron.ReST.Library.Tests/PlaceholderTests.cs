@@ -4,8 +4,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Library.Tests
 {
@@ -30,7 +28,6 @@ namespace Lucifron.ReST.Library.Tests
                 dict.Add(Placeholder.DatasetId, "12345");
 
                 var doi = pattern.Replace(dict.First().Key.GetPlaceholderValue(), dict.First().Value);
-
 
                 //Assert
                 Assert.That(doi, Is.EqualTo("hgdjf"));

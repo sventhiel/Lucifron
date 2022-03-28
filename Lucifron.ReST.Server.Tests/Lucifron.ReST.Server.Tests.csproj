@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fare, Version=2.1.0.0, Culture=neutral, PublicKeyToken=ea68d375bf33a7c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fare.2.1.2\lib\net35\Fare.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.2.7\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -62,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lucifron.ReST.Library\Lucifron.ReST.Library.csproj">
+      <Project>{DBBC8C3B-CED0-4295-99D2-74DEE49B0C7D}</Project>
+      <Name>Lucifron.ReST.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lucifron.ReST.Server\Lucifron.ReST.Server.csproj">
       <Project>{E87C0549-ADC1-42AE-9312-85ADC1AE4EFE}</Project>
       <Name>Lucifron.ReST.Server</Name>

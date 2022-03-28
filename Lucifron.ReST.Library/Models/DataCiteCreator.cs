@@ -21,7 +21,8 @@ namespace Lucifron.ReST.Library.Models
         public DataCiteCreatorType? NameType { get; set; }
 
         [JsonConstructor]
-        protected DataCiteCreator() { }
+        protected DataCiteCreator()
+        { }
 
         public DataCiteCreator(string name, DataCiteCreatorType? type = null)
         {

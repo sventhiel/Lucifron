@@ -1,9 +1,4 @@
 ﻿using Lucifron.ReST.Library.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Library.Enumerations
 {
@@ -11,8 +6,10 @@ namespace Lucifron.ReST.Library.Enumerations
     {
         [PlaceholderValue("{DatasetId}")]
         DatasetId,
+
         [PlaceholderValue("{VersionId}")]
         VersionId,
+
         [PlaceholderValue("{Version}")]
         Version
     }

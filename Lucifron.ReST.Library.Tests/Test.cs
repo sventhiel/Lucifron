@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lucifron.ReST.Library.Tests
 {
     public interface ICanAddCondition
     {
         ICanAddWhereValue Where(string columnName);
+
         void AllRows();
     }
 
     public interface ICanAddWhereOrRun
     {
         ICanAddWhereValue Where(string columnName);
+
         void RunNow();
     }
 
     public interface ICanAddWhereValue
     {
         ICanAddWhereOrRun IsEqualTo(object value);
+
         ICanAddWhereOrRun IsNotEqualTo(object value);
     }
 
@@ -64,7 +63,7 @@ namespace Lucifron.ReST.Library.Tests
             return new DeleteQueryWithoutGrammar(tableName);
         }
 
-        #endregion
+        #endregion Initiating Method(s)
 
         #region Chaining Method(s)
 
@@ -89,7 +88,7 @@ namespace Lucifron.ReST.Library.Tests
             return this;
         }
 
-        #endregion
+        #endregion Chaining Method(s)
 
         #region Executing Method(s)
 
@@ -103,7 +102,7 @@ namespace Lucifron.ReST.Library.Tests
             ExecuteThisQuery();
         }
 
-        #endregion
+        #endregion Executing Method(s)
 
         private void ExecuteThisQuery()
         {
@@ -131,7 +130,7 @@ namespace Lucifron.ReST.Library.Tests
             return new DeleteQueryWithGrammar(tableName);
         }
 
-        #endregion
+        #endregion Initiating Method(s)
 
         #region Chaining Method(s)
 
@@ -156,8 +155,7 @@ namespace Lucifron.ReST.Library.Tests
             return this;
         }
 
-        #endregion
-
+        #endregion Chaining Method(s)
 
         #region Executing Method(s)
 
@@ -171,7 +169,7 @@ namespace Lucifron.ReST.Library.Tests
             ExecuteThisQuery();
         }
 
-        #endregion
+        #endregion Executing Method(s)
 
         private void ExecuteThisQuery()
         {

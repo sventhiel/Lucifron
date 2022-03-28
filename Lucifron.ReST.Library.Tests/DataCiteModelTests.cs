@@ -1,6 +1,5 @@
 ﻿using Lucifron.ReST.Library.Extensions;
 using Lucifron.ReST.Library.Models;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -64,7 +63,7 @@ namespace Lucifron.ReST.Library.Tests
                 var model = new DataCiteModel();
 
                 model.Data.Type = DataCiteType.DOIs;
-                
+
                 //model.AddAuthor("Marcus Reinicke", DataCiteCreatorType.Personal);
 
                 var errors = new List<ValidationResult>();

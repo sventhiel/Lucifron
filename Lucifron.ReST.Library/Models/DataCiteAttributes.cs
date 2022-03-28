@@ -9,6 +9,7 @@ namespace Lucifron.ReST.Library.Models
     public class DataCiteAttributes
     {
         #region required
+
         [JsonProperty("doi")]
         public string DOI { get; set; }
 
@@ -43,7 +44,7 @@ namespace Lucifron.ReST.Library.Models
         [Required]
         public DataCiteTypes Types { get; set; }
 
-        #endregion
+        #endregion required
 
         #region recommended / optional
 
@@ -59,7 +60,7 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("descriptions")]
         public List<DataCiteDescription> Descriptions { get; set; }
 
-        #endregion
+        #endregion recommended / optional
 
         [JsonConstructor]
         public DataCiteAttributes()

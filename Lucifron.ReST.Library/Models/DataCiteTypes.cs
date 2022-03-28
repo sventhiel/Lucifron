@@ -13,7 +13,8 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
 
-        protected DataCiteTypes() { }
+        protected DataCiteTypes()
+        { }
 
         public DataCiteTypes(string resourceType, DataCiteResourceType resourceTypeGeneral)
         {

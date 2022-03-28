@@ -9,7 +9,7 @@ namespace Lucifron.ReST.Library.Extensions
     {
         public static DataCiteData Data(this DataCiteModel model)
         {
-            if(model.Data == null)
+            if (model.Data == null)
                 model.Data = new DataCiteData();
 
             return model.Data;
