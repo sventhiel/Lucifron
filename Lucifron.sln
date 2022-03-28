@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Library", "Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Library.Tests", "Lucifron.ReST.Library.Tests\Lucifron.ReST.Library.Tests.csproj", "{648C8A05-061B-426D-ABF6-66788349C627}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucifron.ReST.Server.Tests", "Lucifron.ReST.Server.Tests\Lucifron.ReST.Server.Tests.csproj", "{17DDD0C4-D927-4F5A-AB4F-33CBA33A2B2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{648C8A05-061B-426D-ABF6-66788349C627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648C8A05-061B-426D-ABF6-66788349C627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648C8A05-061B-426D-ABF6-66788349C627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17DDD0C4-D927-4F5A-AB4F-33CBA33A2B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17DDD0C4-D927-4F5A-AB4F-33CBA33A2B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17DDD0C4-D927-4F5A-AB4F-33CBA33A2B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17DDD0C4-D927-4F5A-AB4F-33CBA33A2B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
