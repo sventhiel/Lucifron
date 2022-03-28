@@ -56,7 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\PlaceholderValueAttribute.cs" />
+    <Compile Include="Enumerations\Placeholder.cs" />
+    <Compile Include="Extensions\DataCiteAttributesExtensions.cs" />
+    <Compile Include="Extensions\DataCiteDataExtensions.cs" />
     <Compile Include="Extensions\DataCiteModelExtensions.cs" />
+    <Compile Include="Extensions\EnumerationExtensions.cs" />
     <Compile Include="Models\DataCiteAttributes.cs" />
     <Compile Include="Models\DataCiteCreator.cs" />
     <Compile Include="Models\DataCiteData.cs" />
