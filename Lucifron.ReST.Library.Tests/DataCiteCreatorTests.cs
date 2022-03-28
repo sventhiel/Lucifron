@@ -21,7 +21,7 @@ namespace Lucifron.ReST.Library.Tests
         {
             try
             {
-                var creator = DataCiteCreator.Convert(name, DataCiteCreatorType.Personal);
+                var creator = new DataCiteCreator(name, DataCiteCreatorType.Personal);
 
                 Assert.That(creator.GivenName, Is.EqualTo(firstname));
                 Assert.That(creator.FamilyName, Is.EqualTo(lastname));

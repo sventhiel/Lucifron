@@ -64,7 +64,9 @@
   <ItemGroup>
     <Compile Include="DataCiteCreatorTests.cs" />
     <Compile Include="DataCiteModelTests.cs" />
+    <Compile Include="PlaceholderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
