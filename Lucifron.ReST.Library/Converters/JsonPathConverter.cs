@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
 namespace Lucifron.ReST.Library.Converters
 {
     public class JsonPathConverter : JsonConverter
     {
-        /// <inheritdoc />
         public override object ReadJson(
             JsonReader reader,
             Type objectType,
@@ -50,14 +49,12 @@ namespace Lucifron.ReST.Library.Converters
             return targetObj;
         }
 
-        /// <inheritdoc />
         public override bool CanConvert(Type objectType)
         {
             // CanConvert is not called when [JsonConverter] attribute is used
             return objectType.GetCustomAttributes(true).OfType<JsonPathConverter>().Any();
         }
 
-        /// <inheritdoc />
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             var properties = value.GetType().GetRuntimeProperties().Where(p => p.CanRead && p.CanWrite);

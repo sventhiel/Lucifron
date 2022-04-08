@@ -18,6 +18,7 @@ namespace Lucifron.ReST.Library.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteTitleType? TitleType { get; set; }
 
+        [JsonConstructor]
         protected DataCiteTitle()
         { }
 

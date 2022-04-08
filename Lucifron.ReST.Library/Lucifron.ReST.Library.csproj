@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt" />

@@ -1,5 +1,4 @@
 ﻿using Lucifron.ReST.Library.Converters;
-using Lucifron.ReST.Library.Types;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -43,16 +42,15 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("data.attributes.types.resourceType")]
         public string ResourceType { get; set; }
 
-        #endregion
+        #endregion data.attributes.types
 
         [JsonProperty("data.attributes.types")]
-        public DataCiteTypes Types { get; set; }
+        public DataCiteType Types { get; set; }
 
         [JsonProperty("data.attributes.url")]
         public string URL { get; set; }
 
-        #endregion
-
+        #endregion data.attributes
 
         public DataCiteModel()
         {
