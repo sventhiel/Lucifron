@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Lucifron.ReST.Library.Types;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -72,15 +73,5 @@ namespace Lucifron.ReST.Library.Models
         }
     }
 
-    public enum DataCiteEventType
-    {
-        [EnumMember(Value = "publish")]
-        Publish = 1,
 
-        [EnumMember(Value = "register")]
-        Register = 2,
-
-        [EnumMember(Value = "hide")]
-        Hide = 3
-    }
 }

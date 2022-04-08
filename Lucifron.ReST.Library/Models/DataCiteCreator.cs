@@ -7,7 +7,7 @@ namespace Lucifron.ReST.Library.Models
 {
     public class DataCiteCreator
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         [JsonProperty("givenName")]
@@ -35,6 +35,7 @@ namespace Lucifron.ReST.Library.Models
                     GivenName = (person.Middle.Length > 0) ? $"{person.First} {person.Middle}" : $"{person.First}";
                     //FamilyName = name.Substring(name.IndexOf(" ") + 1),
                     FamilyName = person.Last;
+                    Name = $"{GivenName} {FamilyName}";
                     NameType = type;
                     break;
 

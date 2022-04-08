@@ -56,12 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\PlaceholderValueAttribute.cs" />
-    <Compile Include="Enumerations\Placeholder.cs" />
-    <Compile Include="Extensions\DataCiteAttributesExtensions.cs" />
-    <Compile Include="Extensions\DataCiteDataExtensions.cs" />
+    <Compile Include="Converters\JsonPathConverter.cs" />
     <Compile Include="Extensions\DataCiteModelExtensions.cs" />
-    <Compile Include="Extensions\EnumerationExtensions.cs" />
     <Compile Include="Models\DataCiteAttributes.cs" />
     <Compile Include="Models\DataCiteCreator.cs" />
     <Compile Include="Models\DataCiteData.cs" />
@@ -72,10 +68,15 @@
     <Compile Include="Models\DataCiteTitle.cs" />
     <Compile Include="Models\DataCiteTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\DataCiteEventType.cs" />
+    <Compile Include="Types\DataCiteType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Schemas\metadata_v4.4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

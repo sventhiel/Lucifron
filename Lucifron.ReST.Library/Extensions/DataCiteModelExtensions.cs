@@ -7,14 +7,6 @@ namespace Lucifron.ReST.Library.Extensions
 {
     public static class DataCiteModelExtensions
     {
-        public static DataCiteData Data(this DataCiteModel model)
-        {
-            if (model.Data == null)
-                model.Data = new DataCiteData();
-
-            return model.Data;
-        }
-
         public static bool Validate(this DataCiteModel model, out List<ValidationResult> results)
         {
             results = new List<ValidationResult>();
