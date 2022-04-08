@@ -58,18 +58,13 @@
   <ItemGroup>
     <Compile Include="Converters\JsonPathConverter.cs" />
     <Compile Include="Extensions\DataCiteModelExtensions.cs" />
-    <Compile Include="Models\DataCiteAttributes.cs" />
     <Compile Include="Models\DataCiteCreator.cs" />
-    <Compile Include="Models\DataCiteData.cs" />
     <Compile Include="Models\DataCiteDate.cs" />
     <Compile Include="Models\DataCiteDescription.cs" />
     <Compile Include="Models\DataCiteModel.cs" />
     <Compile Include="Models\DataCiteSubject.cs" />
     <Compile Include="Models\DataCiteTitle.cs" />
-    <Compile Include="Models\DataCiteTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\DataCiteEventType.cs" />
-    <Compile Include="Types\DataCiteType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -80,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt" />
