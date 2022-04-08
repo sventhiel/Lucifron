@@ -1,5 +1,7 @@
 ﻿using Lucifron.ReST.Library.Extensions;
 using Lucifron.ReST.Library.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -24,12 +26,18 @@ namespace Lucifron.ReST.Library.Tests
             try
             {
                 var model = new DataCiteModel();
-                var errors = new List<ValidationResult>();
 
-                bool valid = model.Validate(out errors);
+                model.DOI = "mlkjl";
+                model.Creators = new List<DataCiteCreator>();
+                model.Creators.Add(new DataCiteCreator("Sven Thiel", DataCiteCreatorType.Personal));
+                model.Creators.Add(new DataCiteCreator("David Schöne", DataCiteCreatorType.Personal));
+                model.Creators.Add(new DataCiteCreator("Franziska Zander", DataCiteCreatorType.Personal));
+                var s = model.Serialize();
+
+                var test = DataCiteModel.Deserialize(s);
 
                 //Assert
-                Assert.That(valid, Is.False);
+                Assert.That(true, Is.False);
             }
             catch (Exception ex)
             {
@@ -42,12 +50,6 @@ namespace Lucifron.ReST.Library.Tests
         {
             try
             {
-                var model = new DataCiteModel();
-                //model.AddAuthor("Sven Thiel", DataCiteCreatorType.Personal);
-                //model.AddAuthor("Marcus Reinicke", DataCiteCreatorType.Personal);
-
-                //Assert
-                Assert.That(model.Data.Attributes.Creators, !Is.Null);
             }
             catch (Exception ex)
             {
@@ -60,22 +62,6 @@ namespace Lucifron.ReST.Library.Tests
         {
             try
             {
-                var model = new DataCiteModel();
-
-                model.Data.Type = DataCiteType.DOIs;
-
-                //model.AddAuthor("Marcus Reinicke", DataCiteCreatorType.Personal);
-
-                var errors = new List<ValidationResult>();
-
-                bool valid = model.Validate(out errors);
-
-                var json = model.Serialize();
-
-                var model2 = DataCiteModel.Deserialize(json);
-
-                //Assert
-                Assert.That(model.Data.Attributes.Creators, !Is.Null);
             }
             catch (Exception ex)
             {
