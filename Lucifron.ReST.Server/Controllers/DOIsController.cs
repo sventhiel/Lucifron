@@ -1,12 +1,16 @@
-﻿using Lucifron.ReST.Library.Models;
+﻿using LiteDB;
+using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;
 using Lucifron.ReST.Server.Models;
+using Lucifron.ReST.Server.Services;
 using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -21,21 +25,30 @@ namespace Lucifron.ReST.Server.Controllers
         {
         }
 
+        /// <summary>
+        /// Create a new DOI based on the users pattern and placeholders.
+        /// </summary>
+        /// <param name="placeholders"></param>
+        /// <returns></returns>
         [ApiAuth]
-        public HttpResponseMessage Get(long id)
+        public HttpResponseMessage Get(Dictionary<string, string> placeholders = null)
         {
             try
             {
                 var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+                var placeholderService = new PlaceholderService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
                 if (user != null)
                 {
-                    string pattern = user.Pattern;
-                    // Replace DatasetId
-                    pattern.Replace("{id}", $"{id}");
+                    var doi = DOIHelper.Create(user.Pattern, placeholders);
 
-                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = DOIHelper.Create(pattern, null) });
+                    if(!DOIHelper.Validate(doi, user.Pattern, placeholderService.FindByUserId(user.Id)))
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    }
+
+                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = doi });
+
                 }
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -46,6 +59,11 @@ namespace Lucifron.ReST.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Get a specific DOI from DataCite.
+        /// </summary>
+        /// <param name="doi"></param>
+        /// <returns></returns>
         [ApiAuth]
         public HttpResponseMessage Get(string doi)
         {
@@ -75,7 +93,7 @@ namespace Lucifron.ReST.Server.Controllers
                 var user = ControllerContext.RouteData.Values["user"] as User;
                 _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
-                if (!DOIHelper.Validate(model.Data.Attributes.DOI, user.Prefix, null))
+                if (!DOIHelper.Validate(model.DOI, user.Prefix, null))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
                 }
