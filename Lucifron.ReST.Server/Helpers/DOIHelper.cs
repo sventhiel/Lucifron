@@ -1,6 +1,4 @@
 ﻿using Fare;
-using Lucifron.ReST.Library.Enumerations;
-using Lucifron.ReST.Library.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -9,12 +7,7 @@ namespace Lucifron.ReST.Server.Helpers
 {
     public class DOIHelper
     {
-        //public static string Create(string prefix, string name, long id)
-        //{
-        //    return $"{prefix}/{name}.{id}-{generate()}";
-        //}
-
-        public static string Create(string pattern, Dictionary<Placeholder, string> placeholders = null)
+        public static string Create(string pattern, Dictionary<string, string> placeholders = null)
         {
             try
             {
@@ -22,7 +15,7 @@ namespace Lucifron.ReST.Server.Helpers
                 {
                     foreach (var placeholder in placeholders)
                     {
-                        pattern = pattern.Replace(placeholder.Key.GetPlaceholderValue(), placeholder.Value);
+                        pattern = pattern.Replace(placeholder.Key, placeholder.Value);
                     }
                 }
                 Xeger xeger = new Xeger(pattern, new Random());
@@ -34,7 +27,7 @@ namespace Lucifron.ReST.Server.Helpers
             }
         }
 
-        public static bool Validate(string doi, string pattern, Dictionary<Placeholder, string> placeholders)
+        public static bool Validate(string doi, string pattern, Dictionary<string, string> placeholders = null)
         {
             try
             {
@@ -42,7 +35,7 @@ namespace Lucifron.ReST.Server.Helpers
                 {
                     foreach (var placeholder in placeholders)
                     {
-                        pattern = pattern.Replace(placeholder.Key.GetPlaceholderValue(), placeholder.Value);
+                        pattern = pattern.Replace(placeholder.Key, placeholder.Value);
                     }
                 }
                 Regex rg = new Regex(pattern);
