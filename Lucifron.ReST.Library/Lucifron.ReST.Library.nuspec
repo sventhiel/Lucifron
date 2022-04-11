@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2022</copyright>
-    <tags>lucifron datacite doi</tags>
+    <tags>lucfron datacite doi</tags>
   </metadata>
 </package>
