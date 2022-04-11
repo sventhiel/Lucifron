@@ -76,7 +76,7 @@ namespace Lucifron.ReST.Client.Services
             var client = new RestClient(_Host);
             client.Authenticator = new JwtAuthenticator(_Token);
 
-            var request = new RestRequest($"api/dois/{model.Data.Attributes.DOI}", Method.PUT).AddJsonBody(model);
+            var request = new RestRequest($"api/dois/{model.DOI}", Method.PUT).AddJsonBody(model);
             var response = client.Execute(request);
 
             return response.Content;
