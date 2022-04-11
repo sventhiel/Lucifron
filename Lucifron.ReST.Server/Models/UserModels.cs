@@ -39,7 +39,7 @@ namespace Lucifron.ReST.Server.Models
 
         [Required]
         [Display(Name = "Pattern")]
-        public Regex Pattern { get; set; }
+        public string Pattern { get; set; }
 
         [Required]
         [Display(Name = "IPv4")]

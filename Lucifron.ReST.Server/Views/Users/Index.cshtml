@@ -11,6 +11,7 @@
             <tr>
                 <th>Name</th>
                 <th>Prefix</th>
+                <th>Pattern</th>
                 <th>IPv4</th>
                 <th>Token</th>
                 <th>Credential</th>
@@ -18,23 +19,26 @@
         </thead>
         @foreach (var user in Model)
         {
-        <tr>
-            <td>
-                @user.Name
-            </td>
-            <td>
-                @user.Prefix
-            </td>
-            <td>
-                @user.IPv4
-            </td>
-            <td>
-                @user.Token
-            </td>
-            <td>
-                @user.Credential
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @user.Name
+        </td>
+        <td>
+            @user.Prefix
+        </td>
+        <td>
+            @user.Pattern
+        </td>
+        <td>
+            @user.IPv4
+        </td>
+        <td>
+            @user.Token
+        </td>
+        <td>
+            @user.Credential
+        </td>
+    </tr>
         }
     </table>
 </div>

@@ -15,7 +15,7 @@ namespace Lucifron.ReST.Server.Services
             _connectionString = connectionString;
         }
 
-        public long Create(string name, string prefix, string ipv4, long credentialId)
+        public long Create(string name, string prefix, string pattern, string ipv4, long credentialId)
         {
             using (var db = new LiteDatabase(_connectionString))
             {
@@ -27,6 +27,7 @@ namespace Lucifron.ReST.Server.Services
                     Name = name,
                     IPv4 = ipv4,
                     Prefix = prefix,
+                    Pattern = pattern,
                     Credential = credentials.FindById(credentialId),
                     Token = generate(64)
                 };

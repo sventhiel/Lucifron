@@ -64,7 +64,7 @@ namespace Lucifron.ReST.Server.Services
             {
                 var col = db.GetCollection<Placeholder>("placeholders");
 
-                return col.Include(c => c.User).Find(c => c.User.Id == userId).Select(c => new KeyValuePair<string, string>(c.Name, c.RegularExpression)).ToDictionary(item => item.Key, item => item.Value);
+                return col.Include(c => c.User).Find(c => c.User.Id == userId).Select(c => new KeyValuePair<string, string>(c.Expression, c.RegularExpression)).ToDictionary(item => item.Key, item => item.Value);
             }
         }
     }
