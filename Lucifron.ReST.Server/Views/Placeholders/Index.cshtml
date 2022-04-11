@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Lucifron.ReST.Server.Models.ReadPlaceholderModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Expression</th>
+                <th>RegularExpression</th>
+                <th>UserId</th>
+                <th>UserName</th>
+            </tr>
+        </thead>
+        @foreach (var placeholder in Model)
+        {
+            <tr>
+                <td>
+                    @placeholder.Id
+                </td>
+                <td>
+                    @placeholder.Expression
+                </td>
+                <td>
+                    @placeholder.RegularExpression
+                </td>
+                <td>
+                    @placeholder.UserId
+                </td>
+                <td>
+                    @placeholder.UserName
+                </td>
+            </tr>
+        }
+    </table>
+</div>
