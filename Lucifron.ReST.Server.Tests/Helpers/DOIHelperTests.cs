@@ -1,6 +1,6 @@
 ﻿using Fare;
-using Lucifron.ReST.Library.Enumerations;
 using Lucifron.ReST.Library.Extensions;
+using Lucifron.ReST.Server.Helpers;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,38 +11,27 @@ namespace Lucifron.ReST.Server.Tests.Helpers
     [TestFixture]
     public class DOIHelperTests
     {
+        public static Dictionary<string, string> MyProperty { get; set; }
+
         [OneTimeSetUp]
         public void OneTimeSetUp()
-        { }
+        {
+            MyProperty = new Dictionary<string, string>
+        {
+            { "{DadtasetId}", "1337" }
+        };
+        }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         { }
 
-        [TestCase("{DatasetId}[ab]{4,6}c")]
-        public void Pattern(string pattern)
+        [TestCase("idiv\\.{DatasetId}-[a-zA-Z0-9]{6}")]
+        public void Pattern(string pattern, Dictionary<string, string> placeholders = null)
         {
             try
             {
-                var placeholders = new Dictionary<Placeholder, string>();
-                placeholders.Add(Placeholder.DatasetId, "1337");
-
-                if (placeholders != null)
-                {
-                    foreach (var placeholder in placeholders)
-                    {
-                        pattern = pattern.Replace(placeholder.Key.GetPlaceholderValue(), placeholder.Value);
-                    }
-                }
-                Xeger xeger = new Xeger(pattern, new Random());
-
-                var x = xeger.Generate();
-
-                Regex rg = new Regex(pattern);
-                var y = rg.IsMatch(x);
-
-                //Assert
-                Assert.That(pattern, Is.EqualTo("hgdjf"));
+                var doi = DOIHelper.Create(pattern, MyProperty);
             }
             catch (Exception ex)
             {
