@@ -192,11 +192,13 @@
     <Compile Include="Attributes\ApiAuthAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CredentialsController.cs" />
+    <Compile Include="Controllers\DataCiteController.cs" />
     <Compile Include="Controllers\DOIsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaceholdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Entities\Credential.cs" />
+    <Compile Include="Entities\DOI.cs" />
     <Compile Include="Entities\Placeholder.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">

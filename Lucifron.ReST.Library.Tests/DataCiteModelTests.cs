@@ -1,11 +1,8 @@
 ﻿using Lucifron.ReST.Library.Extensions;
 using Lucifron.ReST.Library.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Lucifron.ReST.Library.Tests
 {

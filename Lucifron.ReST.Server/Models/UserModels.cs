@@ -1,11 +1,11 @@
 ﻿using Lucifron.ReST.Server.Entities;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 
 namespace Lucifron.ReST.Server.Models
 {
     public class ReadUserModel
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Prefix { get; set; }
         public string Pattern { get; set; }
@@ -17,6 +17,7 @@ namespace Lucifron.ReST.Server.Models
         {
             return new ReadUserModel()
             {
+                Id = user.Id,
                 Name = user.Name,
                 Prefix = user.Prefix,
                 Pattern = user.Pattern,
@@ -46,7 +47,7 @@ namespace Lucifron.ReST.Server.Models
         public string IPv4 { get; set; }
 
         [Required]
-        [Display(Name = "Credential")]
-        public long Credential { get; set; }
+        [Display(Name = "CredentialId")]
+        public long CredentialId { get; set; }
     }
 }

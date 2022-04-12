@@ -1,5 +1,4 @@
 ﻿using LiteDB;
-using System;
 
 namespace Lucifron.ReST.Server.Entities
 {
@@ -16,7 +15,5 @@ namespace Lucifron.ReST.Server.Entities
 
         [BsonRef("credentials")]
         public Credential Credential { get; set; }
-
-        public DateTimeOffset CreationDate { get; set; }
     }
 }

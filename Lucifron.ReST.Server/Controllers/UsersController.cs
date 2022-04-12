@@ -60,7 +60,7 @@ namespace Lucifron.ReST.Server.Controllers
 
                 //
                 // Call the user service with necessary properties to create a new user.
-                userService.Create(model.Name, model.Prefix, model.IPv4, model.Credential);
+                userService.Create(model.Name, model.Prefix, model.Pattern, model.IPv4, model.Credential);
 
                 //
                 // After creation of the new user, redirect to the table of all users.

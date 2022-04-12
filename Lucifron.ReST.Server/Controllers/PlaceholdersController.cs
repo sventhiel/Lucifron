@@ -1,11 +1,8 @@
 ﻿using LiteDB;
 using Lucifron.ReST.Server.Models;
 using Lucifron.ReST.Server.Services;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Lucifron.ReST.Server.Controllers

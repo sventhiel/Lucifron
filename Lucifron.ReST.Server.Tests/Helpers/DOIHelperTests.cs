@@ -1,10 +1,7 @@
-﻿using Fare;
-using Lucifron.ReST.Library.Extensions;
-using Lucifron.ReST.Server.Helpers;
+﻿using Lucifron.ReST.Server.Helpers;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Lucifron.ReST.Server.Tests.Helpers
 {
@@ -26,7 +23,7 @@ namespace Lucifron.ReST.Server.Tests.Helpers
         public void OneTimeTearDown()
         { }
 
-        [TestCase("idiv\\.{DatasetId}-[a-zA-Z0-9]{6}")]
+        [TestCase("idiv\\.{DatasetId}-[a-z0-9]{6}")]
         public void Pattern(string pattern, Dictionary<string, string> placeholders = null)
         {
             try
