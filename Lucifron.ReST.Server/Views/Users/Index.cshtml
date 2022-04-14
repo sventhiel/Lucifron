@@ -15,7 +15,7 @@
                 <th>Pattern</th>
                 <th>IPv4</th>
                 <th>Token</th>
-                <th>Credential</th>
+                <th>CredentialId</th>
             </tr>
         </thead>
         @foreach (var user in Model)
@@ -40,7 +40,7 @@
                 @user.Token
             </td>
             <td>
-                @user.Credential
+                @user.CredentialId
             </td>
         </tr>
         }

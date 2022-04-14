@@ -198,13 +198,12 @@
     <Compile Include="Controllers\PlaceholdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Entities\Credential.cs" />
-    <Compile Include="Entities\DOI.cs" />
     <Compile Include="Entities\Placeholder.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DOIHelper.cs" />
+    <Compile Include="Helpers\SuffixHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CredentialModels.cs" />
     <Compile Include="Models\DOIModels.cs" />
@@ -213,7 +212,6 @@
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CredentialService.cs" />
-    <Compile Include="Services\DOIService.cs" />
     <Compile Include="Services\PlaceholderService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Utils\DataCiteConnectionString.cs" />

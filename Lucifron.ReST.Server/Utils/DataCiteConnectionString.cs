@@ -2,6 +2,9 @@
 
 namespace Lucifron.ReST.Server.Utils
 {
+    /// <summary>
+    /// tba
+    /// </summary>
     public class DataCiteConnectionString
     {
         public string Host { get; set; }

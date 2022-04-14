@@ -11,7 +11,7 @@ namespace Lucifron.ReST.Server.Models
         public string Pattern { get; set; }
         public string IPv4 { get; set; }
         public string Token { get; set; }
-        public long Credential { get; set; }
+        public long CredentialId { get; set; }
 
         public static ReadUserModel Convert(User user)
         {
@@ -23,7 +23,7 @@ namespace Lucifron.ReST.Server.Models
                 Pattern = user.Pattern,
                 IPv4 = user.IPv4,
                 Token = user.Token,
-                Credential = user.Credential.Id
+                CredentialId = user.Credential.Id
             };
         }
     }

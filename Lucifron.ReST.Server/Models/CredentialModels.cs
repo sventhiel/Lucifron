@@ -5,6 +5,7 @@ namespace Lucifron.ReST.Server.Models
 {
     public class ReadCredentialModel
     {
+        public long Id { get; set; }
         public string Host { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
@@ -13,6 +14,7 @@ namespace Lucifron.ReST.Server.Models
         {
             return new ReadCredentialModel()
             {
+                Id = credential.Id,
                 Host = credential.Host,
                 User = credential.User,
                 Password = credential.Password

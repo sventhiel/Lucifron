@@ -1,8 +1,16 @@
 ﻿using Lucifron.ReST.Server.Entities;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Lucifron.ReST.Server.Models
 {
+    public class PlaceholdersModel
+    {
+        [JsonProperty("placeholders")]
+        public Dictionary<string, string> Placeholders { get; set; }
+    }
+
     public class ReadPlaceholderModel
     {
         public long Id { get; set; }
