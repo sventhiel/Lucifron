@@ -25,84 +25,33 @@ namespace Lucifron.ReST.Server.Controllers
         {
         }
 
-        /// <summary>
-        /// Create a new DOI based on the users pattern and placeholders.
-        /// </summary>
-        /// <param name="placeholders"></param>
-        /// <returns></returns>
         [ApiAuth]
-        public HttpResponseMessage Post([FromBody] Dictionary<string, string> placeholders = null)
+        public HttpResponseMessage Post([FromBody] Dictionary<string, string> placeholders)
         {
             try
             {
                 var user = ControllerContext.RouteData.Values["user"] as User;
                 var placeholderService = new PlaceholderService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
+                //var doiService = new DOIService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
-                if (user != null)
+                if(user == null)
+                    return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+                var suffix = SuffixHelper.Create(user.Pattern, placeholders);
+
+                if(suffix == null)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Da ging irgendetwas schief!");
+
+                if (!SuffixHelper.Validate(suffix, user.Pattern, placeholderService.FindByUserId(user.Id)))
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Verifikation ging schief!");
+
+                var model = new CreateDOIModel()
                 {
-                    var doi = DOIHelper.Create(user.Pattern, placeholders);
+                    Prefix = user.Prefix,
+                    Suffix = suffix
+                };
 
-                    if (!DOIHelper.Validate(doi, user.Pattern, placeholderService.FindByUserId(user.Id)))
-                    {
-                        return Request.CreateResponse(HttpStatusCode.BadRequest);
-                    }
-
-                    return Request.CreateResponse(HttpStatusCode.OK, new DOIModel() { DOI = doi });
-                }
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            catch
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        /// <summary>
-        /// Get a specific DOI from DataCite.
-        /// </summary>
-        /// <param name="doi"></param>
-        /// <returns></returns>
-        [ApiAuth]
-        public HttpResponseMessage Get()
-        {
-            try
-            {
-                var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
-
-                var client = new RestClient(_dataCiteConnectionString.Host);
-                var request = new RestRequest($"dois/{doi}", Method.GET);
-
-                var response = client.Execute(request);
-
-                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
-            }
-            catch
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        [ApiAuth]
-        public HttpResponseMessage Put(string doi, [FromBody] DataCiteModel model)
-        {
-            try
-            {
-                var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
-
-                var client = new RestClient(_dataCiteConnectionString.Host);
-                client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
-
-                var serializerSettings = new JsonSerializerSettings();
-                serializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
-
-                var request = new RestRequest($"dois/{doi}", Method.PUT).AddJsonBody(JsonConvert.SerializeObject(model, serializerSettings));
-
-                var response = client.Execute(request);
-
-                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
+                return Request.CreateResponse(HttpStatusCode.OK, model);
             }
             catch
             {
