@@ -11,8 +11,6 @@ namespace Lucifron.ReST.Server.Entities
         public string Prefix { get; set; }
         public string Pattern { get; set; }
 
-        public bool IsActive { get; set; }
-
         [BsonRef("credentials")]
         public Credential Credential { get; set; }
     }
