@@ -28,7 +28,7 @@ namespace Lucifron.ReST.Server.Tests.Helpers
         {
             try
             {
-                var doi = DOIHelper.Create(pattern, MyProperty);
+                var doi = SuffixHelper.Create(pattern, MyProperty);
             }
             catch (Exception ex)
             {
