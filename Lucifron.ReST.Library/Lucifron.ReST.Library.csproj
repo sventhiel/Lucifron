@@ -64,6 +64,7 @@
     <Compile Include="Models\DataCiteModel.cs" />
     <Compile Include="Models\DataCiteSubject.cs" />
     <Compile Include="Models\DataCiteTitle.cs" />
+    <Compile Include="Models\DOIModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
