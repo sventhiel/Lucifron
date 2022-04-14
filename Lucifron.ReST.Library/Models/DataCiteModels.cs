@@ -6,18 +6,35 @@ using System.Runtime.Serialization;
 namespace Lucifron.ReST.Library.Models
 {
     [JsonConverter(typeof(JsonPathConverter))]
-    public class DataCiteModel
+    public class CreateDataCiteModel
     {
+        #region data
+
+        [JsonProperty("data.id")]
+        public string Id { get; set; }
+
+        [JsonProperty("data.type")]
+        public DataCiteType Type { get; set; }
+
         #region data.attributes
 
         [JsonProperty("data.attributes.creators")]
         public List<DataCiteCreator> Creators { get; set; }
+
+        [JsonProperty("data.attributes.contributors")]
+        public List<DataCiteCreator> Contributors { get; set; }
 
         [JsonProperty("data.attributes.descriptions")]
         public List<DataCiteDescription> Descriptions { get; set; }
 
         [JsonProperty("data.attributes.doi")]
         public string DOI { get; set; }
+
+        [JsonProperty("data.attributes.prefix")]
+        public string Prefix { get; set; }
+
+        [JsonProperty("data.attributes.suffix")]
+        public string Suffix { get; set; }
 
         [JsonProperty("data.attributes.event")]
         public DataCiteEventType Event { get; set; }
@@ -44,23 +61,23 @@ namespace Lucifron.ReST.Library.Models
 
         #endregion data.attributes.types
 
-        [JsonProperty("data.attributes.types")]
-        public DataCiteType Types { get; set; }
-
         [JsonProperty("data.attributes.url")]
         public string URL { get; set; }
 
         #endregion data.attributes
 
-        public DataCiteModel()
+        #endregion
+
+        public CreateDataCiteModel()
         {
             Creators = new List<DataCiteCreator>();
+            Contributors = new List<DataCiteCreator>();
             Descriptions = new List<DataCiteDescription>();
             Subjects = new List<DataCiteSubject>();
             Titles = new List<DataCiteTitle>();
         }
 
-        public static DataCiteModel Deserialize(string json)
+        public static CreateDataCiteModel Deserialize(string json)
         {
             var jsonSettings = new JsonSerializerSettings
             {
@@ -68,7 +85,32 @@ namespace Lucifron.ReST.Library.Models
                 DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
             };
 
-            return JsonConvert.DeserializeObject<DataCiteModel>(json, jsonSettings);
+            return JsonConvert.DeserializeObject<CreateDataCiteModel>(json, jsonSettings);
+        }
+    }
+
+    [JsonConverter(typeof(JsonPathConverter))]
+    public class ReadDataCiteModel
+    {
+        #region data
+
+        [JsonProperty("data.id")]
+        public string Id { get; set; }
+
+        [JsonProperty("data.type")]
+        public DataCiteType Type { get; set; }
+
+        #endregion
+
+        public static ReadDataCiteModel Deserialize(string json)
+        {
+            var jsonSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
+            };
+
+            return JsonConvert.DeserializeObject<ReadDataCiteModel>(json, jsonSettings);
         }
     }
 

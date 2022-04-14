@@ -61,7 +61,8 @@
     <Compile Include="Models\DataCiteCreator.cs" />
     <Compile Include="Models\DataCiteDate.cs" />
     <Compile Include="Models\DataCiteDescription.cs" />
-    <Compile Include="Models\DataCiteModel.cs" />
+    <Compile Include="Models\DataCiteIdentifier.cs" />
+    <Compile Include="Models\DataCiteModels.cs" />
     <Compile Include="Models\DataCiteSubject.cs" />
     <Compile Include="Models\DataCiteTitle.cs" />
     <Compile Include="Models\DOIModels.cs" />
