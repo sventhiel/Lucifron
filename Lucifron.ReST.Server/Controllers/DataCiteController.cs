@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using Lucifron.ReST.Library.Extensions;
 using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
@@ -9,7 +10,9 @@ using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
@@ -19,26 +22,20 @@ namespace Lucifron.ReST.Server.Controllers
 {
     public class DataCiteController : ApiController
     {
-        private DataCiteConnectionString _dataCiteConnectionString;
-
         public DataCiteController()
         {
         }
 
-        /// <summary>
-        /// Get a specific DOI from DataCite.
-        /// </summary>
-        /// <param name="doi"></param>
-        /// <returns></returns>
         [ApiAuth]
         public HttpResponseMessage Get(string doi)
         {
             try
             {
-                var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
-                var client = new RestClient(_dataCiteConnectionString.Host);
+                var user = ControllerContext.RouteData.Values["user"] as User;
+                var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+
+                var client = new RestClient(dataCiteConnectionString.Host);
                 var request = new RestRequest($"dois/{doi}", Method.GET);
 
                 var response = client.Execute(request);
@@ -52,25 +49,30 @@ namespace Lucifron.ReST.Server.Controllers
         }
 
         [ApiAuth]
-        public HttpResponseMessage Post([FromBody] DataCiteModel model)
+        public HttpResponseMessage Post([FromBody] CreateDataCiteModel model)
         {
             try
             {
+                // Preequisites
                 var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+                var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+                var placeholderService = new PlaceholderService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
-                if (!SuffixHelper.Validate(model.DOI, user.Prefix, null))
+                // 
+                if (!SuffixHelper.Validate(model.Suffix, user.Pattern, placeholderService.FindByUserId(user.Id)))
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Token.");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "The DOI suffix does not fit to the pattern of the user.");
                 }
 
-                if (!ModelState.IsValid)
+                // 
+                List<ValidationResult> errors = new List<ValidationResult>();
+                if(!model.Validate(out errors))
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid model.");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, errors);
                 }
 
-                var client = new RestClient(_dataCiteConnectionString.Host);
-                client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
+                var client = new RestClient(dataCiteConnectionString.Host);
+                client.Authenticator = new HttpBasicAuthenticator(dataCiteConnectionString.User, dataCiteConnectionString.Password);
 
                 var serializerSettings = new JsonSerializerSettings();
                 serializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
@@ -79,24 +81,24 @@ namespace Lucifron.ReST.Server.Controllers
 
                 var response = client.Execute(request);
 
-                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject(response.Content));
+                return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject<ReadDataCiteModel>(response.Content));
             }
-            catch
+            catch(Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.StackTrace);
             }
         }
 
         [ApiAuth]
-        public HttpResponseMessage Put(string doi, [FromBody] DataCiteModel model)
+        public HttpResponseMessage Put(string doi, [FromBody] CreateDataCiteModel model)
         {
             try
             {
                 var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+                var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
-                var client = new RestClient(_dataCiteConnectionString.Host);
-                client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
+                var client = new RestClient(dataCiteConnectionString.Host);
+                client.Authenticator = new HttpBasicAuthenticator(dataCiteConnectionString.User, dataCiteConnectionString.Password);
 
                 var serializerSettings = new JsonSerializerSettings();
                 serializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
@@ -119,10 +121,10 @@ namespace Lucifron.ReST.Server.Controllers
             try
             {
                 var user = ControllerContext.RouteData.Values["user"] as User;
-                _dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
+                var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
-                var client = new RestClient(_dataCiteConnectionString.Host);
-                client.Authenticator = new HttpBasicAuthenticator(_dataCiteConnectionString.User, _dataCiteConnectionString.Password);
+                var client = new RestClient(dataCiteConnectionString.Host);
+                client.Authenticator = new HttpBasicAuthenticator(dataCiteConnectionString.User, dataCiteConnectionString.Password);
                 var request = new RestRequest($"dois/{doi}", Method.DELETE);
 
                 var response = client.Execute(request);
