@@ -11,7 +11,7 @@ namespace Lucifron.ReST.Client.Services
     public interface IDataCiteService
     {
         // create doi based on the given model
-        string Create(DataCiteModel model);
+        string Create(CreateDataCiteModel model);
 
         // find all related dois
         string Find();
@@ -20,7 +20,7 @@ namespace Lucifron.ReST.Client.Services
         string FindByDOI(string doi);
 
         // update an existing doi based on the given model
-        string Update(DataCiteModel model);
+        string Update(CreateDataCiteModel model);
 
         // delete a whole doi entry based on the given doi
         string Delete(string doi);
@@ -37,22 +37,30 @@ namespace Lucifron.ReST.Client.Services
             _Token = token;
         }
 
-        public string Create(DataCiteModel model)
+        public string Create(CreateDataCiteModel model)
         {
-            List<ValidationResult> results = null;
-
-            if (!model.Validate(out results))
+            try
             {
-                return null;
+                List<ValidationResult> results = null;
+
+                if (!model.Validate(out results))
+                {
+                    return null;
+                }
+
+                var client = new RestClient(_Host);
+                client.Authenticator = new JwtAuthenticator(_Token);
+
+                var request = new RestRequest($"api/datacite", Method.POST).AddJsonBody(model);
+                var response = client.Execute(request);
+
+                return response.Content;
             }
-
-            var client = new RestClient(_Host);
-            client.Authenticator = new JwtAuthenticator(_Token);
-
-            var request = new RestRequest($"api/dois", Method.POST).AddJsonBody(model);
-            var response = client.Execute(request);
-
-            return response.Content;
+            catch(Exception ex)
+            {
+                return "";
+            }
+            
         }
 
         public string Find()
@@ -65,18 +73,18 @@ namespace Lucifron.ReST.Client.Services
             var client = new RestClient(_Host);
             client.Authenticator = new JwtAuthenticator(_Token);
 
-            var request = new RestRequest($"api/dois/{doi}", Method.GET);
+            var request = new RestRequest($"api/datacite/{doi}", Method.GET);
             var response = client.Execute(request);
 
             return response.Content;
         }
 
-        public string Update(DataCiteModel model)
+        public string Update(CreateDataCiteModel model)
         {
             var client = new RestClient(_Host);
             client.Authenticator = new JwtAuthenticator(_Token);
 
-            var request = new RestRequest($"api/dois/{model.DOI}", Method.PUT).AddJsonBody(model);
+            var request = new RestRequest($"api/datacite/{model.DOI}", Method.PUT).AddJsonBody(model);
             var response = client.Execute(request);
 
             return response.Content;
@@ -87,7 +95,7 @@ namespace Lucifron.ReST.Client.Services
             var client = new RestClient(_Host);
             client.Authenticator = new JwtAuthenticator(_Token);
 
-            var request = new RestRequest($"api/dois/{doi}", Method.DELETE);
+            var request = new RestRequest($"api/datacite/{doi}", Method.DELETE);
             var response = client.Execute(request);
 
             return response.Content;
