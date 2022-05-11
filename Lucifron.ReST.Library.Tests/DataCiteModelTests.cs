@@ -22,16 +22,16 @@ namespace Lucifron.ReST.Library.Tests
         {
             try
             {
-                var model = new CreateDataCiteModel();
+                var model = new DataCiteModel();
 
-                model.DOI = "mlkjl";
+                model.Id = "mlkjl";
                 model.Creators = new List<DataCiteCreator>();
                 model.Creators.Add(new DataCiteCreator("Sven Thiel", DataCiteCreatorType.Personal));
                 model.Creators.Add(new DataCiteCreator("David Schöne", DataCiteCreatorType.Personal));
                 model.Creators.Add(new DataCiteCreator("Franziska Zander", DataCiteCreatorType.Personal));
                 var s = model.Serialize();
 
-                var test = CreateDataCiteModel.Deserialize(s);
+                var test = DataCiteModel.Deserialize(s);
 
                 //Assert
                 Assert.That(true, Is.False);
