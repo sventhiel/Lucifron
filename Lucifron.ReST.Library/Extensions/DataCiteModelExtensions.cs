@@ -7,16 +7,16 @@ namespace Lucifron.ReST.Library.Extensions
 {
     public static class DataCiteModelExtensions
     {
-        public static bool Validate(this CreateDataCiteModel model, out List<ValidationResult> results)
+        public static bool Validate(this DataCiteModel model, out List<ValidationResult> results)
         {
             results = new List<ValidationResult>();
 
             var validator = new DataAnnotationsValidator.DataAnnotationsValidator();
 
-            return validator.TryValidateObjectRecursive<CreateDataCiteModel>(model, results);
+            return validator.TryValidateObjectRecursive<DataCiteModel>(model, results);
         }
 
-        public static string Serialize(this CreateDataCiteModel model)
+        public static string Serialize(this DataCiteModel model)
         {
             var jsonSettings = new JsonSerializerSettings
             {
