@@ -27,6 +27,10 @@ namespace Lucifron.ReST.Library.Models
     public enum DataCiteDateType
     {
         [EnumMember(Value = "Issued")]
-        Issued = 1
+        Issued = 1,
+        [EnumMember(Value = "Created")]
+        Created = 2,
+        [EnumMember(Value = "Updated")]
+        Updated = 3
     }
 }
