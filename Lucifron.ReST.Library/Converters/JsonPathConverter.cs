@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
@@ -16,6 +17,7 @@ namespace Lucifron.ReST.Library.Converters
             object existingValue,
             JsonSerializer serializer)
         {
+
             JObject jo = JObject.Load(reader);
             object targetObj = Activator.CreateInstance(objectType);
 
@@ -110,6 +112,10 @@ namespace Lucifron.ReST.Library.Converters
                     }
                 }
             }
+
+            serializer.Converters.Add(new StringEnumConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            serializer.DefaultValueHandling = DefaultValueHandling.Ignore;
 
             serializer.Serialize(writer, main);
         }
