@@ -1,5 +1,7 @@
-﻿using Lucifron.ReST.Library.Models;
+﻿using Lucifron.ReST.Library.Converters;
+using Lucifron.ReST.Library.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,24 +9,37 @@ namespace Lucifron.ReST.Library.Extensions
 {
     public static class DataCiteModelExtensions
     {
-        public static bool Validate(this DataCiteModel model, out List<ValidationResult> results)
+        public static bool Validate(this CreateDataCiteModel model, out List<ValidationResult> results)
         {
             results = new List<ValidationResult>();
 
             var validator = new DataAnnotationsValidator.DataAnnotationsValidator();
 
-            return validator.TryValidateObjectRecursive<DataCiteModel>(model, results);
+            return validator.TryValidateObjectRecursive<CreateDataCiteModel>(model, results);
         }
 
-        public static string Serialize(this DataCiteModel model)
+        public static string Serialize(this CreateDataCiteModel model)
         {
             var jsonSettings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+                Converters = new[] { new StringEnumConverter() }
             };
 
-            return JsonConvert.SerializeObject(model, jsonSettings);
+            return JsonConvert.SerializeObject(model, Formatting.None, jsonSettings);
+        }
+
+        public static string Serialize(this ReadDataCiteModel model)
+        {
+            var jsonSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+                Converters = new[] { new StringEnumConverter() }
+            };
+
+            return JsonConvert.SerializeObject(model, Formatting.None, jsonSettings);
         }
     }
 }
