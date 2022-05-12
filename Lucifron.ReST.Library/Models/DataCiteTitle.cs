@@ -11,10 +11,10 @@ namespace Lucifron.ReST.Library.Models
         [Required]
         public string Title { get; set; }
 
-        [JsonProperty("lang")]
+        [JsonProperty("lang", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Language { get; set; }
 
-        [JsonProperty("titleType")]
+        [JsonProperty("titleType", DefaultValueHandling = DefaultValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteTitleType? TitleType { get; set; }
 

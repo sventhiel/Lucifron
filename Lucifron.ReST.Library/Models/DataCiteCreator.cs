@@ -7,7 +7,7 @@ namespace Lucifron.ReST.Library.Models
 {
     public class DataCiteCreator
     {
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("givenName")]
@@ -16,15 +16,15 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("familyName")]
         public string FamilyName { get; set; }
 
-        [JsonProperty("nameType")]
+        [JsonProperty("nameType", DefaultValueHandling = DefaultValueHandling.Ignore)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public DataCiteCreatorType? NameType { get; set; }
+        public DataCiteCreatorType NameType { get; set; }
 
         [JsonConstructor]
         protected DataCiteCreator()
         { }
 
-        public DataCiteCreator(string name, DataCiteCreatorType? type = null)
+        public DataCiteCreator(string name, DataCiteCreatorType type)
         {
             switch (type)
             {

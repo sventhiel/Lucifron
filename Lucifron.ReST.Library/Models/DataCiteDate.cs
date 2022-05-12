@@ -10,7 +10,6 @@ namespace Lucifron.ReST.Library.Models
         public string Date { get; set; }
 
         [JsonProperty("dateType")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public DataCiteDateType DateType { get; set; }
 
         [JsonConstructor]
@@ -24,6 +23,7 @@ namespace Lucifron.ReST.Library.Models
         }
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DataCiteDateType
     {
         [EnumMember(Value = "Issued")]
