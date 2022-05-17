@@ -11,7 +11,7 @@ namespace Lucifron.ReST.Server.Controllers
 {
     public class NamesController : ApiController
     {
-        //[ApiAuth]
+        [ApiAuth]
         public HttpResponseMessage Get(string name)
         {
             try
