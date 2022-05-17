@@ -42,7 +42,7 @@ namespace Lucifron.ReST.Server.Tests.Controllers
 
                 var model = new CreateDataCiteModel()
                 {
-                    DOI = "jlkjsdf/jshjdf"
+                    Id = "jlkjsdf/jshjdf"
                 };
 
                 var controller = new DataCiteController()

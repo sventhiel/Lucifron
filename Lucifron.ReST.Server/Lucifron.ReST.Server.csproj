@@ -66,9 +66,6 @@
     <Reference Include="LiteDB, Version=5.0.11.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.5.0.11\lib\net45\LiteDB.dll</HintPath>
     </Reference>
-    <Reference Include="Lucifron.ReST.Library, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lucifron.ReST.Library.1.0.0.5\lib\net452\Lucifron.ReST.Library.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NameParser, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NameParserSharp.1.5.0\lib\net45\NameParser.dll</HintPath>
@@ -195,6 +192,7 @@
     <Compile Include="Controllers\DataCiteController.cs" />
     <Compile Include="Controllers\DOIsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NamesController.cs" />
     <Compile Include="Controllers\PlaceholdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Entities\Credential.cs" />
@@ -203,10 +201,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DOIHelper.cs" />
     <Compile Include="Helpers\SuffixHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CredentialModels.cs" />
     <Compile Include="Models\ErrorModels.cs" />
+    <Compile Include="Models\NameModels.cs" />
     <Compile Include="Models\PlaceholderModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,7 +225,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="LICENSE.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -314,6 +313,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lucifron.ReST.Library\Lucifron.ReST.Library.csproj">
+      <Project>{dbbc8c3b-ced0-4295-99d2-74dee49b0c7d}</Project>
+      <Name>Lucifron.ReST.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -22,7 +22,7 @@ namespace Lucifron.ReST.Library.Tests
         {
             try
             {
-                var model = new DataCiteModel();
+                var model = new CreateDataCiteModel();
 
                 model.Id = "mlkjl";
                 model.Creators = new List<DataCiteCreator>();
@@ -31,7 +31,7 @@ namespace Lucifron.ReST.Library.Tests
                 model.Creators.Add(new DataCiteCreator("Franziska Zander", DataCiteCreatorType.Personal));
                 var s = model.Serialize();
 
-                var test = DataCiteModel.Deserialize(s);
+                var test = CreateDataCiteModel.Deserialize(s);
 
                 //Assert
                 Assert.That(true, Is.False);
