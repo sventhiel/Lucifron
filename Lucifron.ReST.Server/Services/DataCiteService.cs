@@ -23,7 +23,7 @@ namespace Lucifron.ReST.Server.Services
             _user = user;
         }
 
-        public ReadDataCiteModel Create(CreateDataCiteModel model)
+        public CreateDataCiteModel Create(CreateDataCiteModel model)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Lucifron.ReST.Server.Services
                 if (!response.IsSuccessful)
                     return null;
 
-                return JsonConvert.DeserializeObject<ReadDataCiteModel>(response.Content);
+                return JsonConvert.DeserializeObject<CreateDataCiteModel>(response.Content);
             }
             catch (Exception ex)
             {
@@ -48,27 +48,27 @@ namespace Lucifron.ReST.Server.Services
             }
         }
 
-        public ReadDataCiteModel FindByDOI(string doi)
+        public CreateDataCiteModel FindByDOI(string doi)
         {
             return null;
         }
 
-        public List<ReadDataCiteModel> FindByPrefix(string prefix)
+        public List<CreateDataCiteModel> FindByPrefix(string prefix)
         {
             return null;
         }
 
-        public List<ReadDataCiteModel> FindBySuffix(string suffix)
+        public List<CreateDataCiteModel> FindBySuffix(string suffix)
         {
             return null;
         }
 
-        public List<ReadDataCiteModel> FindByUserId(long userId)
+        public List<CreateDataCiteModel> FindByUserId(long userId)
         {
             return null;
         }
 
-        public ReadDataCiteModel Update(string doi, CreateDataCiteModel model)
+        public CreateDataCiteModel Update(string doi, CreateDataCiteModel model)
         {
             throw new NotImplementedException();
         }
