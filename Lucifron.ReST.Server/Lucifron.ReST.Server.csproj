@@ -206,7 +206,6 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CredentialModels.cs" />
     <Compile Include="Models\ErrorModels.cs" />
-    <Compile Include="Models\NameModels.cs" />
     <Compile Include="Models\PlaceholderModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
