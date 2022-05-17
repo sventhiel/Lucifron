@@ -1,4 +1,5 @@
 ﻿using Lucifron.ReST.Server.Attributes;
+using NameParser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace Lucifron.ReST.Server.Controllers
 {
     public class NamesController : ApiController
     {
-        [ApiAuth]
+        //[ApiAuth]
         public HttpResponseMessage Get(string name)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = new HumanName(name);
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch
             {
