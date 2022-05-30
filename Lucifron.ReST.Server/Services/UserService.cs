@@ -55,6 +55,7 @@ namespace Lucifron.ReST.Server.Services
                 return col.FindById(id);
             }
         }
+
         public User FindByIPv4AndToken(string ipv4, string token)
         {
             using (var db = new LiteDatabase(_connectionString))

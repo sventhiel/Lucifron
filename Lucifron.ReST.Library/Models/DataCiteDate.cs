@@ -28,8 +28,10 @@ namespace Lucifron.ReST.Library.Models
     {
         [EnumMember(Value = "Issued")]
         Issued = 1,
+
         [EnumMember(Value = "Created")]
         Created = 2,
+
         [EnumMember(Value = "Updated")]
         Updated = 3
     }

@@ -3,12 +3,8 @@ using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;
-using Lucifron.ReST.Server.Models;
 using Lucifron.ReST.Server.Services;
 using Lucifron.ReST.Server.Utils;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Authenticators;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
@@ -34,12 +30,12 @@ namespace Lucifron.ReST.Server.Controllers
                 var placeholderService = new PlaceholderService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
                 //var doiService = new DOIService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
-                if(user == null)
+                if (user == null)
                     return Request.CreateResponse(HttpStatusCode.Forbidden);
 
                 var suffix = SuffixHelper.Create(user.Pattern, placeholders);
 
-                if(suffix == null)
+                if (suffix == null)
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Da ging irgendetwas schief!");
 
                 if (!SuffixHelper.Validate(suffix, user.Pattern, placeholderService.FindByUserId(user.Id)))

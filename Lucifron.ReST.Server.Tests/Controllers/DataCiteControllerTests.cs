@@ -1,22 +1,11 @@
 ﻿using LiteDB;
 using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Controllers;
-using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Services;
-using Moq;
 using NUnit.Framework;
-using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Http.Routing;
-using System.Web.Mvc;
 
 namespace Lucifron.ReST.Server.Tests.Controllers
 {
@@ -25,7 +14,7 @@ namespace Lucifron.ReST.Server.Tests.Controllers
     {
         [OneTimeSetUp]
         public void OneTimeSetUp()
-        {}
+        { }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
@@ -51,7 +40,6 @@ namespace Lucifron.ReST.Server.Tests.Controllers
                     Configuration = new HttpConfiguration(),
                     ActionContext = new HttpActionContext(),
                     ControllerContext = new HttpControllerContext(),
-                    
                 };
 
                 controller.Request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "sdfsdf");
@@ -63,7 +51,6 @@ namespace Lucifron.ReST.Server.Tests.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-            
         }
     }
 }

@@ -6,9 +6,6 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
 
 namespace Lucifron.ReST.Server.Services
 {
@@ -77,6 +74,5 @@ namespace Lucifron.ReST.Server.Services
         {
             return false;
         }
-
     }
 }

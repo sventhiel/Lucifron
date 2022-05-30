@@ -4,7 +4,6 @@ using Lucifron.ReST.Library.Models;
 using Lucifron.ReST.Server.Attributes;
 using Lucifron.ReST.Server.Entities;
 using Lucifron.ReST.Server.Helpers;
-using Lucifron.ReST.Server.Models;
 using Lucifron.ReST.Server.Services;
 using Lucifron.ReST.Server.Utils;
 using Newtonsoft.Json;
@@ -31,7 +30,6 @@ namespace Lucifron.ReST.Server.Controllers
         {
             try
             {
-
                 var user = ControllerContext.RouteData.Values["user"] as User;
                 var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
 
@@ -58,15 +56,15 @@ namespace Lucifron.ReST.Server.Controllers
                 var dataCiteConnectionString = new DataCiteConnectionString(user.Credential.Host, user.Credential.User, user.Credential.Password);
                 var placeholderService = new PlaceholderService(new ConnectionString(ConfigurationManager.ConnectionStrings["Lucifron"].ConnectionString));
 
-                // 
+                //
                 if (!SuffixHelper.Validate(model.Suffix, user.Pattern, placeholderService.FindByUserId(user.Id)))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "The DOI suffix does not fit to the pattern of the user.");
                 }
 
-                // 
+                //
                 List<ValidationResult> errors = new List<ValidationResult>();
-                if(!model.Validate(out errors))
+                if (!model.Validate(out errors))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, errors);
                 }
@@ -83,7 +81,7 @@ namespace Lucifron.ReST.Server.Controllers
 
                 return Request.CreateResponse(response.StatusCode, JsonConvert.DeserializeObject<ReadDataCiteModel>(response.Content));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.StackTrace);
             }

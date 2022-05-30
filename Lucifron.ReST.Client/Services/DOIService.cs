@@ -2,16 +2,11 @@
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Client.Services
 {
     public interface IDOIService
     {
-
     }
 
     public class DOIService
@@ -40,7 +35,7 @@ namespace Lucifron.ReST.Client.Services
 
                 return response.Content;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return string.Empty;
             }

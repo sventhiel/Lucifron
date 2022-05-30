@@ -1,9 +1,7 @@
 ﻿using Fare;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace Lucifron.ReST.Server.Helpers
 {
@@ -32,7 +30,7 @@ namespace Lucifron.ReST.Server.Helpers
                 Xeger xeger = new Xeger($"{pattern}", new Random());
                 return xeger.Generate();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }

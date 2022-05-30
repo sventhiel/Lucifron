@@ -17,7 +17,6 @@ namespace Lucifron.ReST.Library.Converters
             object existingValue,
             JsonSerializer serializer)
         {
-
             JObject jo = JObject.Load(reader);
             object targetObj = Activator.CreateInstance(objectType);
 

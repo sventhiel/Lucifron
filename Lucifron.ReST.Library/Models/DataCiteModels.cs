@@ -105,7 +105,7 @@ namespace Lucifron.ReST.Library.Models
 
         #endregion data.attributes
 
-        #endregion
+        #endregion data
 
         public CreateDataCiteModel()
         {
@@ -219,7 +219,7 @@ namespace Lucifron.ReST.Library.Models
 
         #endregion data.attributes
 
-        #endregion
+        #endregion data
 
         public ReadDataCiteModel()
         {

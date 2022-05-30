@@ -56,11 +56,10 @@ namespace Lucifron.ReST.Client.Services
 
                 return response.Content;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "";
             }
-            
         }
 
         public string Find()
