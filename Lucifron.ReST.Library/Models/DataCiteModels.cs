@@ -1,7 +1,9 @@
-﻿using Lucifron.ReST.Library.Converters;
+﻿using Lucifron.ReST.Library.Attributes;
+using Lucifron.ReST.Library.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace Lucifron.ReST.Library.Models
@@ -25,9 +27,11 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("data.attributes.doi")]
         public string Doi { get; set; }
 
+        [JsonRequired]
         [JsonProperty("data.attributes.prefix")]
         public string Prefix { get; set; }
 
+        [JsonRequired]
         [JsonProperty("data.attributes.suffix")]
         public string Suffix { get; set; }
 
@@ -39,6 +43,7 @@ namespace Lucifron.ReST.Library.Models
         [JsonProperty("data.attributes.identifiers")]
         public List<DataCiteIdentifier> Identifiers { get; set; }
 
+        [Required, NotEmpty]
         [JsonRequired]
         [JsonProperty("data.attributes.creators")]
         public List<DataCiteCreator> Creators { get; set; }
