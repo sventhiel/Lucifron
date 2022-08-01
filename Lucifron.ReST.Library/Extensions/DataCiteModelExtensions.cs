@@ -14,7 +14,7 @@ namespace Lucifron.ReST.Library.Extensions
 
             var validator = new DataAnnotationsValidator.DataAnnotationsValidator();
 
-            return validator.TryValidateObjectRecursive<CreateDataCiteModel>(model, results);
+            return validator.TryValidateObjectRecursive(model, results);
         }
 
         public static string Serialize(this CreateDataCiteModel model)
