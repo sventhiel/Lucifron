@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-description: Create a report about something that is not working.
+description: You discovered something that does not work as desired/expected? Please report that bug!
 labels: 'type: bug report'
 assignees: sventhiel
 body:
