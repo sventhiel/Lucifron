@@ -41,5 +41,5 @@ body:
     required: false
 - type: markdown
   attributes:
-    value: |
-      Some more information in here!
+    label: Is there an existing issue for this?
+    description: asdasd
