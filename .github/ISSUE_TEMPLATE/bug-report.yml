@@ -42,5 +42,6 @@ body:
 - type: markdown
   attributes:
     value: |
-      Some more information in here!
-      ### 123123
+      ## Work Items
+      
+      Those will be added by maintainers and so on.
