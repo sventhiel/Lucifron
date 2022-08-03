@@ -41,5 +41,5 @@ body:
     required: false
 - type: markdown
   attributes:
-    label: Work Items
-    description: This will be filled out by us. :)
+    value: |
+      Some more information in here!
