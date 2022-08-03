@@ -31,7 +31,8 @@ body:
     label: How can it be reproduced? 
     description: Steps to reproduce the behavior.
     value: |
-    
+     sdfsdf
+     sdfsdsf
   validations:
     required: false
 - type: textarea
