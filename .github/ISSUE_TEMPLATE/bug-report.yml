@@ -30,9 +30,11 @@ body:
   attributes:
     label: How can it be reproduced? 
     description: Steps to reproduce the behavior.
-    value: |
-     sdfsdf
-     sdfsdsf
+    placeholder: |
+      1. Go to '...'
+      2. Click on '....'
+      3. Scroll down to '....'
+      4. See error
   validations:
     required: false
 - type: textarea
