@@ -39,6 +39,8 @@ body:
     placeholder: 
   validations:
     required: false
-
-## test
-sdfsdf
+- type: markdown
+  attributes:
+    label: test
+    value: |
+      Some more information in here!
