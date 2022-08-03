@@ -6,42 +6,50 @@ body:
 - type: markdown
   attributes:
     value: |
-      Some more information in here!
+      Please provide as much information as possible about the bug.
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?
-    description: Please search to see if an issue already exists for the bug you encountered ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue)). More information on our issue management policies is available [here](https://aka.ms/aspnet/issue-policies).
+    description: Please check the existing issues first, to see if an issue already exists for the bug you encountered ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue)).
     options:
-    - label: I have searched the existing issues
+    - label: "I searched for a similar issue and didn't find a suitable one."
       required: true
 - type: textarea
   attributes:
-    label: Describe the bug
+    label: What is going wrong? 
     description: A clear and concise description of what the bug is.
   validations:
     required: true
 - type: textarea
   attributes:
-    label: Expected Behavior
+    label: How is it supposed to work?
     description: A clear and concise description of what you expected to happen.
   validations:
     required: false
 - type: textarea
   attributes:
-    label: Steps To Reproduce
+    label: How can it be reproduced? 
     description: Steps to reproduce the behavior.
+    value: |
+    
   validations:
     required: false
 - type: textarea
   attributes:
-    label: Exceptions (if any)
+    label: Do you get any exceptions?
+    description:       
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: What kind of system do you use?
+    description:       
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Task(s)
     description: Include the exception you get when facing this issue.
     placeholder: 
   validations:
     required: false
-- type: markdown
-  attributes:
-    value: |
-      ## Work Items
-      
-      Those will be added by maintainers and so on.
