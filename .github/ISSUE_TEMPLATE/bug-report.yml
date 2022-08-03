@@ -43,5 +43,3 @@ body:
   attributes:
     label: Work Items
     description: This will be filled out by us. :)
-  validations:
-    required: false
