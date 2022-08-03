@@ -39,10 +39,9 @@ body:
     placeholder: 
   validations:
     required: false
-- type: textarea
+- type: markdown
   attributes:
     label: Work Items
-    description: |
-      dshfksjdf
+    description: This will be filled out by us. :)
   validations:
     required: false
