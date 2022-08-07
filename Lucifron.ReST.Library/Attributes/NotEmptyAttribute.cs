@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lucifron.ReST.Library.Attributes
 {
@@ -12,12 +7,13 @@ namespace Lucifron.ReST.Library.Attributes
     {
         public override bool IsValid(object value)
         {
-            // if not type of collection
-            // return false
+            if (value.GetType() == typeof(ICollection))
+            {
+                var collection = (ICollection)value;
+                return collection.Count > 0;
+            }
 
-            var col = value as ICollection;
-
-            return col.Count > 0;
+            return false;
         }
     }
 }
