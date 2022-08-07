@@ -1,34 +1,44 @@
 name: 💡 Feature Request
-description: You have an idea for a completely new feature (or set of functions)? Please let us know!
-labels: 'type: question'
+description: You have an idea for a new feature (or set of functions)? Please let us know!
+labels: 'type: feature request'
 assignees: sventhiel
 body:
 - type: markdown
   attributes:
     value: |
-      More information on our issue management policies can be found here: https://aka.ms/aspnet/issue-policies
-
-      Please keep in mind that the GitHub issue tracker is not intended as a general support forum, but for reporting **non-security** bugs and feature requests.
-
-      If you believe you have an issue that affects the SECURITY of the platform, please do NOT create an issue and instead email your issue details to secure@microsoft.com. Your report may be eligible for our [bug bounty](https://www.microsoft.com/en-us/msrc/bounty-dot-net-core) but ONLY if it is reported through email.
-      For other types of questions, consider using [StackOverflow](https://stackoverflow.com).
+      Please provide as much information as possible about the feature.
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?
-    description: Please search to see if an issue already exists for the bug you encountered ([aspnetcore/issues](https://github.com/dotnet/aspnetcore/issues?q=is%3Aissue)). More information on our issue management policies is available [here](https://aka.ms/aspnet/issue-policies).
+    description: Please search to see if an issue already exists for the feature request ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue)).
     options:
     - label: I have searched the existing issues
       required: true
 - type: textarea
   attributes:
-    label: Describe your question, idea and/or hint.
+    label: What do you miss?
     description: A clear and concise description of what your question/idea/hint is.
   validations:
     required: true
+  - type: dropdown
+    id: feature
+    attributes:
+      label: To which feature does it belong? 
+      description: Please select the appropriate feature. In any other case or uncertainty use 'other'. 
+      options:
+        - Proxy
+        - Library
+        - Other
+    validations:
+      required: true
 - type: textarea
   attributes:
-    label: Work Items
-    description: |
-      Hier kommen entsprechende Einträge von uns, die dann als Work Items umgewandelt werden können.
+    label: Which task(s) is/are related to this issue?
+    description: If you have already (small) tasks in mind to fix the bug, please let us know by adding items similar to the placeholder ones. Otherwise we are going to add proper tasks for it later on.
+    placeholder: |
+      - [ ] add try-catch block
+      - [ ] add exception handling
+      - [ ] change assignment of variables
+      - [ ] ...
   validations:
     required: false

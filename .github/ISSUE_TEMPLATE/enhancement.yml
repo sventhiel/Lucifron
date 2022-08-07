@@ -1,6 +1,6 @@
 name: 🚀 Enhancement
-description: ???.
-labels: 'type: question'
+description: In general, you are happy with a feature but .
+labels: 'type: enhancement'
 assignees: sventhiel
 body:
 - type: markdown
@@ -15,9 +15,9 @@ body:
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?
-    description: Please search to see if an issue already exists for the bug you encountered ([aspnetcore/issues](https://github.com/dotnet/aspnetcore/issues?q=is%3Aissue)). More information on our issue management policies is available [here](https://aka.ms/aspnet/issue-policies).
+    description: Please check the existing issues first, to see if an issue already exists for the bug you encountered ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue)).
     options:
-    - label: I have searched the existing issues
+    - label: "I searched for a similar issue and didn't find a suitable one."
       required: true
 - type: textarea
   attributes:
