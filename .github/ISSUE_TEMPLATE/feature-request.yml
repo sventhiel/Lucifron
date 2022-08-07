@@ -20,14 +20,14 @@ body:
     description: A clear and concise description of what your question/idea/hint is.
   validations:
     required: true
-  - type: dropdown
-    attributes:
-      label: To which feature does it belong? 
-      description: Please select the appropriate feature. In any other case or uncertainty use 'other'. 
-      options:
-        - Proxy
-        - Library
-        - Other
+- type: dropdown
+  attributes:
+    label: To which feature does it belong? 
+    description: Please select the appropriate feature. In any other case or uncertainty use 'other'. 
+    options:
+      - Proxy
+      - Library
+      - Other
     validations:
       required: true
 - type: textarea
