@@ -22,6 +22,27 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Users/Index">Index</a></li>
+                            <li><a href="/Users/Create">Create</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Placeholders <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Placeholders/Index">Index</a></li>
+                            <li><a href="/Placeholders/Create">Create</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Credentials <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Credentials/Index">Index</a></li>
+                            <li><a href="/Credentials/Create">Create</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Request.IsAuthenticated)

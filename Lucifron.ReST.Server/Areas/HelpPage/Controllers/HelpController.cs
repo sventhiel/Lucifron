@@ -1,8 +1,8 @@
-using Lucifron.ReST.Server.Areas.HelpPage.ModelDescriptions;
-using Lucifron.ReST.Server.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
+using Lucifron.ReST.Server.Areas.HelpPage.ModelDescriptions;
+using Lucifron.ReST.Server.Areas.HelpPage.Models;
 
 namespace Lucifron.ReST.Server.Areas.HelpPage.Controllers
 {
