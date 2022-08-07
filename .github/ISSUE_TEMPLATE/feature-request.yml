@@ -23,7 +23,7 @@ body:
 - type: dropdown
   attributes:
     label: To which feature does it belong? 
-    description: Please select the appropriate feature. In any other case or uncertainty use 'other'. 
+    description: Please select the appropriate feature. In any other case or uncertainty use \'other\'. 
     options:
       - Proxy
       - Library
