@@ -12,7 +12,7 @@ body:
     label: "Is there an existing issue for this?"
     description: "Please search to see if an issue already exists related to your question ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue))."
     options:
-    - label: I have searched the existing issues
+    - label: "I have searched the existing issues."
       required: true
 - type: textarea
   attributes:
