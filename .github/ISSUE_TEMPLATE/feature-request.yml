@@ -9,31 +9,21 @@ body:
       Please provide as much information as possible about the feature.
 - type: checkboxes
   attributes:
-    label: Is there an existing issue for this?
-    description: Please search to see if an issue already exists for the feature request ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue)).
+    label: "Is there an existing issue for this?"
+    description: "Please search to see if an issue already exists for the feature request ([lucifron/issues](https://github.com/sventhiel/lucifron/issues?q=is%3Aissue))."
     options:
-    - label: I have searched the existing issues
+    - label: "I have searched the existing issues."
       required: true
 - type: textarea
   attributes:
-    label: What do you miss?
-    description: A clear and concise description of what your idea is.
-  validations:
-    required: true
-- type: dropdown
-  attributes:
-    label: To which feature does it belong?
-    description: Please select the appropriate feature. In any other case or uncertainty use \'other\'.
-    options:
-      - Proxy
-      - Library
-      - Other
+    label: "What do you miss?"
+    description: "A clear and concise description of what your idea is."
   validations:
     required: true
 - type: textarea
   attributes:
-    label: Which task(s) is/are related to this issue?
-    description: If you have already (small) tasks in mind to fix the bug, please let us know by adding items similar to the placeholder ones. Otherwise we are going to add proper tasks for it later on.
+    label: "Which task(s) is/are related to this issue?"
+    description: "If you have already (small) tasks in mind to fix the bug, please let us know by adding items similar to the placeholder ones. Otherwise we are going to add proper tasks for it later on."
     placeholder: |
       - [ ] add try-catch block
       - [ ] add exception handling
