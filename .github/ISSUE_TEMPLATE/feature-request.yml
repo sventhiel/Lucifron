@@ -22,6 +22,18 @@ body:
     required: true
 - type: textarea
   attributes:
+    label: "How it is supposed to work/look?"
+    description: "Please provide further information about your solution."
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: "Do you know a similar solution out there in the wild?"
+    description: "You know other systems that support that feature - please share that information with us."
+  validations:
+    required: false
+- type: textarea
+  attributes:
     label: "Which task(s) is/are related to this issue?"
     description: "If you have already (small) tasks in mind to fix the bug, please let us know by adding items similar to the placeholder ones. Otherwise we are going to add proper tasks for it later on."
     placeholder: |
